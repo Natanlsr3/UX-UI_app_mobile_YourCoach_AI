@@ -22,16 +22,30 @@ namespace MVC.App.UI.RegisterMenu
         [Header("Error")]
         [SerializeField] protected GameObject m_ErrorPanel;
 
+        protected TMP_Text m_UsernamePlaceholder;
+        protected TMP_Text m_PasswordPlaceholder;
+
         protected Animator m_Anim;
+
+        protected string m_DefaultUsernameText;
+        protected string m_DefaultPasswordText;
 
         protected string m_TypedUsername;
         protected string m_TypedPassword;
 
         protected bool m_IsPasswordHidden = true;
 
+        protected const string NULL_TEXT = "";
+
         protected virtual void Start()
         {
             m_Anim = GetComponent<Animator>();
+
+            // Setup input field's placeholder text reference and default value
+            m_UsernamePlaceholder = m_UsernameField.placeholder.GetComponent<TMP_Text>();
+            m_PasswordPlaceholder = m_PasswordField.placeholder.GetComponent<TMP_Text>();
+            m_DefaultUsernameText = m_UsernamePlaceholder.text;
+            m_DefaultPasswordText = m_PasswordPlaceholder.text;
 
             // Bind to input fields
             m_UsernameField.onValueChanged.AddListener(UpdateUsername);
@@ -78,6 +92,17 @@ namespace MVC.App.UI.RegisterMenu
         protected virtual void DisplayError(bool _isVisible)
         {
             if (m_ErrorPanel.activeInHierarchy != _isVisible) m_ErrorPanel.SetActive(_isVisible);
+        }
+
+        protected void ResetTextField()
+        {
+            // Reset content
+            m_UsernameField.text = NULL_TEXT;
+            m_PasswordField.text = NULL_TEXT;
+
+            // Reset placeholder
+            m_UsernamePlaceholder.text = m_DefaultUsernameText;
+            m_PasswordPlaceholder.text = m_DefaultPasswordText;
         }
     }
 }

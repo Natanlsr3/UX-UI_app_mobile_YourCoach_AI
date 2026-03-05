@@ -44,28 +44,31 @@ namespace MVC.App.UI.RegisterMenu
         private void SetForgetPasswordWindow()
         {
             DisplayError(false);
+            ResetTextField();
             m_Anim.SetBool(IS_ACTIVE, false);
 
             ForgetPassword window = Instantiate(forgetPasswordScreen, transform.parent).GetComponent<ForgetPassword>();
             window.SetUserInfo(username);
             window.OnPasswordReset += ChangePassword;
+            window.OnLeftPopUp += DisplayLogin;
         }
 
         // To change when BDD added
         private void ChangePassword(string _newPassword)
         {
             password = _newPassword;
-            m_Anim.SetBool(IS_ACTIVE, true); 
         }
 
         private void SetCreateAccountWindow()
         {
             DisplayError(false);
+            ResetTextField();
             m_Anim.SetBool(IS_ACTIVE, false);
 
             CreateAccount window = Instantiate(createAccountScreen, transform.parent).GetComponent<CreateAccount>();
             window.SetUserInfo(username);
             window.OnAccountCreated += ChangeUser;
+            window.OnLeftPopUp += DisplayLogin;
         }
 
         // To change when BDD added
@@ -73,8 +76,9 @@ namespace MVC.App.UI.RegisterMenu
         {
             username = _newUsername;
             password = _newPassword;
-            m_Anim.SetBool(IS_ACTIVE, true);
         }
+
+        private void DisplayLogin() { m_Anim.SetBool(IS_ACTIVE, true); }
     }
 }
 

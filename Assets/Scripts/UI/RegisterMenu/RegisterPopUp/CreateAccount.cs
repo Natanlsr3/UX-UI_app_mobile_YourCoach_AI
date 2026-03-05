@@ -29,9 +29,9 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
             else DisplayError(true);
         }
 
-        protected override void LeavePopUp()
+        protected override void Confirm()
         {
-            base.LeavePopUp();
+            base.Confirm();
             CreateNewAccount();
         }
     }
