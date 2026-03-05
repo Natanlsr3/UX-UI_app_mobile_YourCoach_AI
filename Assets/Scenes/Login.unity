@@ -199,7 +199,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -567,6 +567,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 121783376}
     m_Modifications:
+    - target: {fileID: 2397936903601509041, guid: 821946a4645247c4382cc085af999002, type: 3}
+      propertyPath: loginScreen
+      value: 
+      objectReference: {fileID: 1728140062179219430, guid: 6df969b2348c1f541b308aa2e13ee378, type: 3}
     - target: {fileID: 4092412116884633509, guid: 821946a4645247c4382cc085af999002, type: 3}
       propertyPath: m_Name
       value: SplashScreen
@@ -581,27 +585,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8811374612228910396, guid: 821946a4645247c4382cc085af999002, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8811374612228910396, guid: 821946a4645247c4382cc085af999002, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8811374612228910396, guid: 821946a4645247c4382cc085af999002, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8811374612228910396, guid: 821946a4645247c4382cc085af999002, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8811374612228910396, guid: 821946a4645247c4382cc085af999002, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8811374612228910396, guid: 821946a4645247c4382cc085af999002, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8811374612228910396, guid: 821946a4645247c4382cc085af999002, type: 3}
       propertyPath: m_LocalPosition.x

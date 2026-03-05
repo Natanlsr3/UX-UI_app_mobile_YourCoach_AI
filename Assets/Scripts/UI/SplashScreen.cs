@@ -7,9 +7,12 @@ namespace MVC.App.UI
 {
     public class SplashScreen : MonoBehaviour
     {
-        public event Action OnSplashScreenFinished;
+        [SerializeField] private GameObject loginScreen;
 
-        //Used by animation event
-        public void OnSplashScreenAnimFinished() { OnSplashScreenFinished?.Invoke(); }
+        //Function used by animation event
+        public void OnSplashScreenAnimFinished()
+        {
+            Instantiate(loginScreen, transform.parent);
+        }
     }
 }
