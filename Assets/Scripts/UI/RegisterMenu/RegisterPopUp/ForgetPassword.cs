@@ -15,9 +15,8 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
         {
             if (m_TypedUsername == m_Username)
             {
-                DisplayError(false);
                 OnPasswordReset?.Invoke(m_TypedPassword);
-                m_Anim.SetTrigger(HIDE);
+                LeavePopUp();
             }
             else DisplayError(true);
         }

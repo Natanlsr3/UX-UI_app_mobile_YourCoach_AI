@@ -22,9 +22,8 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
         {
             if (m_TypedUsername != m_Username)
             {
-                DisplayError(false);
                 OnAccountCreated?.Invoke(m_TypedUsername, m_TypedPassword);
-                m_Anim.SetTrigger(HIDE);
+                LeavePopUp();
             }
             else DisplayError(true);
         }
