@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MVC.App.UI
+namespace MVC.App.UI.MainMenu
 {
     public class Conversation : MonoBehaviour
     {
@@ -13,23 +13,49 @@ namespace MVC.App.UI
         [SerializeField] private TMP_InputField userMessageField;
         [SerializeField] private Button sendButton;
 
-        private TMP_Text userMessagePlaceholder;
-        private string defaultMessageText;
+        [Header("Voice")]
+        [SerializeField] private Button voiceButton;
+        [SerializeField] private Image voiceDisplay;
+        [SerializeField] private Sprite mikeIcon;
+        [SerializeField] private Sprite voiceIcon;
+        [SerializeField] private Sprite sendIcon;
+        [SerializeField] private Sprite cancelIcon;
 
+        private TMP_Text userMessagePlaceholder;
+        private Image sendDisplay;
+
+        private string defaultMessageText;
         private string userMessage;
+
+        private bool isRecordingMessage;
+
 
         void Start()
         {
             userMessagePlaceholder = userMessageField.placeholder.GetComponent<TMP_Text>();
             defaultMessageText = userMessagePlaceholder.text;
+            sendDisplay = sendButton.GetComponent<Image>();
 
             userMessageField.onValueChanged.AddListener(SetMessage);
-            sendButton.onClick.AddListener(SendMessage);
+            sendButton.onClick.AddListener(TrySendMessage);
+            voiceButton.onClick.AddListener(SetVoiceMessage);
         }
 
         private void SetMessage(string _message)
         {
             userMessage = _message;
+        }
+
+        private void TrySendMessage()
+        {
+            if (isRecordingMessage)
+            {
+                voiceDisplay.sprite = mikeIcon;
+                sendDisplay.sprite = sendIcon;
+
+                isRecordingMessage = false;
+            }
+            else if (userMessageField.text != "") SendMessage();
         }
 
         private void SendMessage()
@@ -39,6 +65,25 @@ namespace MVC.App.UI
 
             userMessageField.text = "";
             userMessagePlaceholder.text = defaultMessageText;
+        }
+
+        private void SetVoiceMessage()
+        {
+            if (isRecordingMessage)
+            {
+                voiceDisplay.sprite = mikeIcon;
+                sendDisplay.sprite = sendIcon;
+
+                userMessage = "";
+                SendMessage();
+            }
+            else
+            {
+                voiceDisplay.sprite = voiceIcon;
+                sendDisplay.sprite = cancelIcon;
+            }
+
+            isRecordingMessage = !isRecordingMessage;
         }
     }
 }
