@@ -21,6 +21,10 @@ namespace MVC.App.UI.MainMenu
         [SerializeField] private Sprite sendIcon;
         [SerializeField] private Sprite cancelIcon;
 
+        [Header("Workout")] 
+        [SerializeField] private GameObject workoutProposal;
+        [SerializeField] private Button workoutButton;
+
         private TMP_Text userMessagePlaceholder;
         private Image sendDisplay;
 
@@ -39,6 +43,8 @@ namespace MVC.App.UI.MainMenu
             userMessageField.onValueChanged.AddListener(SetMessage);
             sendButton.onClick.AddListener(TrySendMessage);
             voiceButton.onClick.AddListener(SetVoiceMessage);
+
+            workoutButton.onClick.AddListener(SetWorkout);
         }
 
         private void SetMessage(string _message)
@@ -84,6 +90,11 @@ namespace MVC.App.UI.MainMenu
             }
 
             isRecordingMessage = !isRecordingMessage;
+        }
+
+        private void SetWorkout()
+        {
+            Instantiate(workoutProposal, transform.parent);
         }
     }
 }
