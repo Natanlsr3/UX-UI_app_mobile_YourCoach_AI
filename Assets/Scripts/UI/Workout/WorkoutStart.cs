@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MVC.App.UI.Workout
 {
-    public class WorkoutManager : MonoBehaviour
+    public class WorkoutStart : MonoBehaviour
     {
         [SerializeField] private Button backButton;
         [SerializeField] private Button detailButton;
         [SerializeField] private Button startButton;
+
+        [SerializeField] private TextMeshProUGUI workoutName;
 
         [SerializeField] private GameObject workoutPreviewPrefab;
         private WorkoutPreview workoutPreview;
@@ -23,6 +26,11 @@ namespace MVC.App.UI.Workout
         {
             backButton.onClick.AddListener(Back);
             detailButton.onClick.AddListener(SetWorkoutPreview);
+            startButton.onClick.AddListener(StartWorkout);
+
+            workoutName.text = WorkoutSession.Instance.WorkoutName;
+
+            WorkoutSessionManager.Instance.gameObject.SetActive(false);
         }
 
         private void SetWorkoutPreview()
@@ -31,7 +39,7 @@ namespace MVC.App.UI.Workout
             if (isPreviewDisplayed)
             {
                 workoutPreview = Instantiate(workoutPreviewPrefab, transform).GetComponent<WorkoutPreview>();
-                workoutPreview.SetPreview(WorkoutSession.Instance.WorkoutName, WorkoutSession.Instance.WorkoutExercises);
+                workoutPreview.SetPreview("Upcoming Exercises", WorkoutSession.Instance.WorkoutExercises);
 
                 foreach (Image _arrow in arrows)
                 {
@@ -52,6 +60,14 @@ namespace MVC.App.UI.Workout
         private void Back()
         {
             SceneManager.LoadScene("Main");
+        }
+
+        private void StartWorkout()
+        {
+            gameObject.SetActive(false);
+            WorkoutSessionManager.Instance.gameObject.SetActive(true);
+            WorkoutSessionManager.Instance.SetCurrentExercise();
+            WorkoutProgress.Instance.StartProgress();
         }
     }
 
