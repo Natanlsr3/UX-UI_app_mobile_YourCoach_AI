@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ namespace MVC.App.UI.Workout
         [SerializeField] private Transform separationContainer;
         [SerializeField] private RectTransform progressBar;
         [SerializeField] private Image workoutProgress;
+        [SerializeField] private TextMeshProUGUI progressPercent;
 
         private List<float> exercisesDuration = new List<float>();
         private float totalTime;
@@ -95,6 +97,7 @@ namespace MVC.App.UI.Workout
 
                 time += Time.deltaTime;
                 workoutProgress.fillAmount = time / totalTime;
+                progressPercent.text = Mathf.FloorToInt(time / totalTime * 100) + "%";
 
                 yield return new WaitForEndOfFrame();
             }
