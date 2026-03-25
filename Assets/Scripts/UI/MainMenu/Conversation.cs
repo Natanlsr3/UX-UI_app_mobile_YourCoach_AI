@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MVC.App.UI.MainMenu
 {
     public class Conversation : MonoBehaviour
     {
-        [SerializeField] private GameObject messageDisplay;
+        [SerializeField] private GameObject userMessageDisplay;
+        [SerializeField] private GameObject coachMessageDisplay;
         [SerializeField] private Transform messageContainer;
         [SerializeField] private TMP_InputField userMessageField;
         [SerializeField] private Button sendButton;
@@ -23,7 +25,8 @@ namespace MVC.App.UI.MainMenu
 
         [Header("Workout")] 
         [SerializeField] private GameObject workoutProposal;
-        [SerializeField] private Button workoutButton;
+        [SerializeField] private GameObject workoutButton;
+        [SerializeField] private Button triggerButton;
 
         private TMP_Text userMessagePlaceholder;
         private Image sendDisplay;
@@ -44,7 +47,7 @@ namespace MVC.App.UI.MainMenu
             sendButton.onClick.AddListener(TrySendMessage);
             voiceButton.onClick.AddListener(SetVoiceMessage);
 
-            workoutButton.onClick.AddListener(SetWorkout);
+            triggerButton.onClick.AddListener(ProposeWorkout);
         }
 
         private void SetMessage(string _message)
@@ -64,9 +67,18 @@ namespace MVC.App.UI.MainMenu
             else if (userMessageField.text != "") SendMessage();
         }
 
+        private void ProposeWorkout()
+        {
+            GameObject message = Instantiate(coachMessageDisplay, messageContainer);
+            message.GetComponentInChildren<TMP_Text>().text = "Get ready for your workout !";
+
+            Button _workoutButton = Instantiate(workoutButton, messageContainer).GetComponent<Button>();
+            _workoutButton.onClick.AddListener(SetWorkout);
+        }
+
         private void SendMessage()
         {
-            GameObject message = Instantiate(messageDisplay, messageContainer);
+            GameObject message = Instantiate(userMessageDisplay, messageContainer);
             message.GetComponentInChildren<TMP_Text>().text = userMessage;
 
             userMessageField.text = "";

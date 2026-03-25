@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: f3198867e7208b745b4eb3541f401892
   - enabled: 1
+    path: Assets/Scenes/Workout.unity
+    guid: fc56c1bf6e40f8846848a9a93072a30e
+  - enabled: 1
     path: Assets/Scenes/SecondaryMenu/Profile.unity
     guid: 0d31e187f8b6667409dfb6af5177c64a
   - enabled: 1

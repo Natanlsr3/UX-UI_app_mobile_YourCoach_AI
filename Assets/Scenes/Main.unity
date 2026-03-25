@@ -1510,7 +1510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ded82a08bb31fc4fbe9b4a4217f0164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageDisplay: {fileID: 634808411494357205, guid: 4b24425ffb8d7ec40a9f10ae5b10d8fa, type: 3}
+  userMessageDisplay: {fileID: 634808411494357205, guid: 4b24425ffb8d7ec40a9f10ae5b10d8fa, type: 3}
+  coachMessageDisplay: {fileID: 7183434119241062397, guid: 4e6c7d5ac8c253b449366c161a40d8e0, type: 3}
   messageContainer: {fileID: 1113284899}
   userMessageField: {fileID: 1800686766}
   sendButton: {fileID: 710410682}
@@ -1521,7 +1522,8 @@ MonoBehaviour:
   sendIcon: {fileID: 21300000, guid: 0d1b61f366629c641aa3b5aca92f8994, type: 3}
   cancelIcon: {fileID: 21300000, guid: ea0db3052bc0a474d825ceeebd00e47a, type: 3}
   workoutProposal: {fileID: 7502239091014679478, guid: 4b97c8aafba635a44817de4878236dd0, type: 3}
-  workoutButton: {fileID: 1444415345}
+  workoutButton: {fileID: 2757716994847531246, guid: 0f333a0393745714eb22a19bfa9a69f7, type: 3}
+  triggerButton: {fileID: 1444415345}
 --- !u!1 &931219976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,7 +1915,7 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 1
+  m_ReverseArrangement: 0
 --- !u!1 &1184171128
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,50 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MVC.App.UI.Workout
 {
-    public class WorkoutProposal : MonoBehaviour
+    public class WorkoutProposal : WorkoutPreview
     {
-        [Header("Exercises")]
-        [SerializeField] private Transform exerciseContainer;
-        [SerializeField] private GameObject exerciseDisplay;
-
-        [SerializeField] private List<Exercise> exercies;
-
         [Header("Choice")]
-        [SerializeField] private Button yesButton;
         [SerializeField] private Button noButton;
+        [SerializeField] private GameObject startButtonPrefab;
 
-        void Start()
+        protected override void Start()
         {
-            yesButton.onClick.AddListener(AcceptProposal);
+            base.Start();
+            SetPreview(m_WorkoutName, m_Exercies);
+
             noButton.onClick.AddListener(RefuseProposal);
 
-            int _exerciseNum = exercies.Count;
-            for (int i = 0; i < _exerciseNum; i++)
-            {
-                Exercise _exercise = exercies[i];
-                ExerciseDisplay _exerciseDisplay = Instantiate(exerciseDisplay, exerciseContainer).GetComponent<ExerciseDisplay>();
-                _exerciseDisplay.SetExercise(_exercise.Name, _exercise.ExercisePreview,_exercise.Duration, _exercise.Level, _exercise.SetNumber, _exercise.RepNumber, _exercise.Muscle, _exercise.RecoveryTime);
-            }
+            Button _startButton = Instantiate(startButtonPrefab, m_ExerciseContainer).GetComponent<Button>();
+            _startButton.onClick.AddListener(StartWorkout);
+
+            WorkoutSession.Instance.WorkoutExercises = m_Exercies;
+            WorkoutSession.Instance.WorkoutName = m_WorkoutName;
         }
 
-        private void AcceptProposal()
+        private void StartWorkout()
         {
-            LeaveProposal();
+            SceneManager.LoadScene("Workout");
         }
 
         private void RefuseProposal()
         {
-            LeaveProposal();
+            Leave();
         }
 
-        private void LeaveProposal()
-        {
-            Destroy(gameObject);
-        }
+
     }
 }
 
