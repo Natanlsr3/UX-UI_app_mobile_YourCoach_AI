@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 1968219722}
   - component: {fileID: 1968219721}
   m_Layer: 0
-  m_Name: WorkoutSession
+  m_Name: LogSession
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -588,6 +588,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7390324157a5b4496d73c12b6c6ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  possibleUsers:
+  - Name: Admin
+    Password: 1
+  - Name: Admin
+    Password: 2
   WorkoutExercises: []
   WorkoutName: 
 --- !u!4 &1968219722

@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 6173490318374630888}
   - component: {fileID: 254045882922927651}
   m_Layer: 5
-  m_Name: WorkoutProposal
+  m_Name: WorkoutProposal_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -620,37 +620,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6289c68d318f1d4cb0aba055d47df31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_WorkoutName: Full Body
+  m_WorkoutName: Leggs & Abdominals
   m_NameDisplay: {fileID: 1931889154899149316}
   m_ExerciseContainer: {fileID: 8310137042393708924}
   m_ExerciseDisplayPrefab: {fileID: 3306305346889929870, guid: e97a318d8317405469242260930abea5, type: 3}
   m_Exercies:
-  - Name: Gobblet Squat
-    ExercisePreview: {fileID: 21300000, guid: 19f15655513f18e40a37af4ec04b93e9, type: 3}
+  - Name: Lateral Squat
+    ExercisePreview: {fileID: 21300000, guid: 82305c2b2f629204b8f74cafbdaf1a67, type: 3}
     Duration: 40
-    Level: Advanced
-    SetNumber: 4
-    RepNumber: 10
+    Level: Beginner
+    SetNumber: 3
+    RepNumber: 15
     Muscle: Quadriceps
-    RecoveryTime: 60
-  - Name: Push-up
-    ExercisePreview: {fileID: 21300000, guid: 8f266310ebdb9bc4eba13754ba809655, type: 3}
-    Duration: 120
+    RecoveryTime: 10
+  - Name: Squat
+    ExercisePreview: {fileID: 21300000, guid: b43b3a5224806d14fab0b1d868822734, type: 3}
+    Duration: 30
     Level: Beginner
     SetNumber: 4
+    RepNumber: 15
+    Muscle: Quadriceps
+    RecoveryTime: 10
+  - Name: Reverse Lunge
+    ExercisePreview: {fileID: 21300000, guid: d859cf5235875ee46bc4f68e66e4c5fb, type: 3}
+    Duration: 30
+    Level: Beginner
+    SetNumber: 3
     RepNumber: 10
     Muscle: Quadriceps
     RecoveryTime: 30
-  - Name: Plank
-    ExercisePreview: {fileID: 21300000, guid: ca9a4a244e94cb74692a0d8142dea498, type: 3}
-    Duration: 60
-    Level: Advanced
+  - Name: Glute Bridge
+    ExercisePreview: {fileID: 21300000, guid: 735123677d1d9a046a2580f59b1f7c81, type: 3}
+    Duration: 20
+    Level: Intermediate
+    SetNumber: 3
+    RepNumber: 20
+    Muscle: Glutes
+    RecoveryTime: 30
+  - Name: Dead bug
+    ExercisePreview: {fileID: 21300000, guid: d859cf5235875ee46bc4f68e66e4c5fb, type: 3}
+    Duration: 45
+    Level: Beginner
+    SetNumber: 3
+    RepNumber: 12
+    Muscle: Abdominals
+    RecoveryTime: 30
+  - Name: Plank with lateral tap
+    ExercisePreview: {fileID: 21300000, guid: 6bbe249f31a67514aba6677e804db63c, type: 3}
+    Duration: 15
+    Level: Beginner
     SetNumber: 4
     RepNumber: 10
+    Muscle: Abdominals
+    RecoveryTime: 30
+  - Name: Mountain Climber
+    ExercisePreview: {fileID: 21300000, guid: 90c978faeab885249aef8dbbb6fc7067, type: 3}
+    Duration: 30
+    Level: Beginner
+    SetNumber: 4
+    RepNumber: 20
     Muscle: Quadriceps
-    RecoveryTime: 60
+    RecoveryTime: 20
   noButton: {fileID: 892494491396727706}
   startButtonPrefab: {fileID: 2757716994847531246, guid: b6bc2f8eda098194aab2290ba05b8981, type: 3}
+  Conversation: {fileID: 0}
 --- !u!1 &9182267460300268873
 GameObject:
   m_ObjectHideFlags: 0

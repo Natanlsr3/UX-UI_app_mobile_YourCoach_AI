@@ -49,11 +49,11 @@ namespace MVC.App.UI.Workout
             float _exerciseTotalDuration = 0f;
             totalTime = 0f;
 
-            int _exerciseNum = WorkoutSession.Instance.WorkoutExercises.Count;
+            int _exerciseNum = LogSession.Instance.WorkoutExercises.Count;
             for (int i = 0; i < _exerciseNum; i++)
             {
-                _exerciseTotalDuration = WorkoutSession.Instance.WorkoutExercises[i].Duration * WorkoutSession.Instance.WorkoutExercises[i].SetNumber
-                                         + WorkoutSession.Instance.WorkoutExercises[i].RecoveryTime * WorkoutSession.Instance.WorkoutExercises[i].SetNumber;
+                _exerciseTotalDuration = LogSession.Instance.WorkoutExercises[i].Duration * LogSession.Instance.WorkoutExercises[i].SetNumber
+                                         + LogSession.Instance.WorkoutExercises[i].RecoveryTime * LogSession.Instance.WorkoutExercises[i].SetNumber;
                 exercisesDuration.Add(_exerciseTotalDuration);
                 totalTime += _exerciseTotalDuration;
             }
@@ -95,7 +95,7 @@ namespace MVC.App.UI.Workout
                     yield return null;
                 }
 
-                time += Time.deltaTime;
+                time += Time.deltaTime * WorkoutSessionManager.SPEED;
                 workoutProgress.fillAmount = time / totalTime;
                 progressPercent.text = Mathf.FloorToInt(time / totalTime * 100) + "%";
 
