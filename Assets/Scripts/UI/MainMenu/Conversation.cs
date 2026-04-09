@@ -121,11 +121,11 @@ namespace MVC.App.UI.MainMenu
         {
             GameObject message = Instantiate(coachMessageDisplay, coachMessageContainer);
             message.GetComponentInChildren<TMP_Text>().text = "Get ready for your workout !";
-            FillMessage(userMessageContainer);
+            FillMessage(userMessageContainer, "Get ready for your workout !");
 
             Button _workoutButton = Instantiate(workoutButton, coachMessageContainer).GetComponent<Button>();
             _workoutButton.onClick.AddListener(SetWorkout);
-            FillMessage(userMessageContainer);
+            FillMessage(userMessageContainer, "");
 
             MakeCoachTalk();
         }
@@ -138,7 +138,7 @@ namespace MVC.App.UI.MainMenu
             userMessageField.text = "";
             userMessagePlaceholder.text = defaultMessageText;
 
-            FillMessage(coachMessageContainer);
+            FillMessage(coachMessageContainer, userMessage);
 
             StartCoroutine(AnswerCoroutine());
         }
@@ -158,7 +158,7 @@ namespace MVC.App.UI.MainMenu
             GameObject message = Instantiate(coachMessageDisplay, coachMessageContainer);
             message.GetComponentInChildren<TMP_Text>().text = _message;
 
-            FillMessage(userMessageContainer);
+            FillMessage(userMessageContainer, _message);
             SoundManager.instance.StopClip();
             SoundManager.instance.GoToClip(SoundManager.instance.conversationLines, conversationStep);
             //SoundManager.instance.NextClip(SoundManager.instance.conversationLines);
@@ -171,9 +171,10 @@ namespace MVC.App.UI.MainMenu
                 Invoke("ProposeWorkout", 15f);
         }
 
-        private void FillMessage(Transform _container)
+        private void FillMessage(Transform _container, string _message)
         {
-            Instantiate(fillMessage, _container);
+            GameObject fill = Instantiate(fillMessage, _container);
+            fill.GetComponentInChildren<TMP_Text>().text = _message;
         }
 
         private void SetVoiceMessage()
