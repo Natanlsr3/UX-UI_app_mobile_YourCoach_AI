@@ -79,8 +79,25 @@ namespace MVC.App.UI.MainMenu
 
             MakeCoachIdle();
 
-            if (LogSession.Instance.UserIndex == 0) SendCoachMessage(coachAnswersProfile1[conversationStep].answer);
-            else SendCoachMessage(coachAnswersProfile2[conversationStep].answer);
+            if (LogSession.Instance.UserIndex == 0)
+            {
+                if (PlayerPrefs.HasKey("TrainingSessionDone"))
+                {
+                    conversationStep = 2;
+                }
+                
+                SendCoachMessage(coachAnswersProfile1[conversationStep].answer);
+            }
+            else 
+            {
+                if (PlayerPrefs.HasKey("TrainingSessionDone"))
+                {
+                    conversationStep = 2;
+                }
+                SoundManager.instance.GoToClip(SoundManager.instance.conversationLines, conversationStep);
+                SoundManager.instance.PlayClip();
+                SendCoachMessage(coachAnswersProfile2[conversationStep].answer);
+            }
         }
 
         private void SetMessage(string _message)
@@ -142,10 +159,12 @@ namespace MVC.App.UI.MainMenu
             message.GetComponentInChildren<TMP_Text>().text = _message;
 
             FillMessage(userMessageContainer);
-            conversationStep++;
             SoundManager.instance.StopClip();
-            SoundManager.instance.NextClip(SoundManager.instance.conversationLines);
+            SoundManager.instance.GoToClip(SoundManager.instance.conversationLines, conversationStep);
+            //SoundManager.instance.NextClip(SoundManager.instance.conversationLines);
             SoundManager.instance.PlayClip();
+            conversationStep++;
+            
             MakeCoachTalk();
         }
 
