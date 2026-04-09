@@ -160,9 +160,11 @@ namespace MVC.App.UI.Workout
             StopCoroutine(workoutCoroutine);
 
             SetExerciseDisplay(true);
-            SoundManager.instance.StopClip();
-            SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseNumber);
-            SoundManager.instance.PlayClip();
+            if (SoundManager.instance.soundSource.isPlaying)
+                SoundManager.instance.StopClip();
+            SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
+            if(!SoundManager.instance.soundSource.isPlaying)
+                SoundManager.instance.PlayClip();
             exerciseNumber++;
             exerciseProgressNumber++;
             WorkoutProgress.Instance.IsPaused = false;
