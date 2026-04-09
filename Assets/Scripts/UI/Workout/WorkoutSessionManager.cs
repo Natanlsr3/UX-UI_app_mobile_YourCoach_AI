@@ -260,6 +260,7 @@ namespace MVC.App.UI.Workout
             yield return new WaitForSeconds(3f / SPEED);
 
             StopCoroutine(workoutCoroutine);
+            PlayerPrefs.SetInt("TrainingSessionDone", 0);
             SceneManager.LoadScene("Main");
         }
 

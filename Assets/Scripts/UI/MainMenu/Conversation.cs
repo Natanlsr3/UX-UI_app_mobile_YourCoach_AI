@@ -166,6 +166,9 @@ namespace MVC.App.UI.MainMenu
             conversationStep++;
             
             MakeCoachTalk();
+
+            if (conversationStep == 2)
+                Invoke("ProposeWorkout", 15f);
         }
 
         private void FillMessage(Transform _container)
