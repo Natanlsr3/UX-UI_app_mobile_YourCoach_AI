@@ -5,7 +5,9 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance { get; private set; }
-    public List<AudioClip> voiceLines = new List<AudioClip>();
+    public List<AudioClip> conversationLines = new List<AudioClip>();
+    public List<AudioClip> exercicesLines = new List<AudioClip>();
+    public List<AudioClip> motivationLines = new List<AudioClip>();
     public AudioSource soundSource;
 
     private void Awake()
@@ -20,7 +22,7 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     
-    public void SwitchClip()
+    public void NextClip(List<AudioClip> voiceLines)
     {
         AudioClip currentLine = soundSource.clip;
         
@@ -34,8 +36,24 @@ public class SoundManager : MonoBehaviour
             soundSource.clip = nextLine;
     }
 
+    public void GoToClip(List<AudioClip> voiceLines, int  index)
+    {
+        AudioClip nextLine = voiceLines[index];
+        soundSource.clip = nextLine;
+    }
+
     public void PlayClip()
     {
         soundSource.Play();
+    }
+
+    public void PauseClip()
+    {
+        soundSource.Pause();
+    }
+
+    public void StopClip()
+    { 
+        soundSource.Stop();
     }
 }

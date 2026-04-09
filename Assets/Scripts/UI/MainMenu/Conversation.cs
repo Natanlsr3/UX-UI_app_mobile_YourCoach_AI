@@ -143,7 +143,9 @@ namespace MVC.App.UI.MainMenu
 
             FillMessage(userMessageContainer);
             conversationStep++;
-
+            SoundManager.instance.StopClip();
+            SoundManager.instance.NextClip(SoundManager.instance.conversationLines);
+            SoundManager.instance.PlayClip();
             MakeCoachTalk();
         }
 

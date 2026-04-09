@@ -194,7 +194,9 @@ MonoBehaviour:
   - message: 
     answer: Hello ! How are you today ?
   - message: 
-    answer: Message 2
+    answer: No problem, I suggest a short session to gently stretch your legs, and
+      we'll adapt the exercises. If the pain is too intense or persistent, let me
+      know and we'll stop the session so you can rest and pick it up later.
   - message: 
     answer: Message 3
   coachAnswersProfile2:
