@@ -5,12 +5,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace MVC.App.UI.Workout
 {
     public class WorkoutSessionManager : MonoBehaviour
     {
         [SerializeField] private Button backButton;
+
+        [Header("Coach Display")]
+        [SerializeField] private VideoPlayer video;
+        [SerializeField] private GameObject coach;
 
         [Header("Set x Rep")]
         [SerializeField] private GameObject repPanel;
@@ -53,7 +58,7 @@ namespace MVC.App.UI.Workout
         private float maxRecoveryTime;
         private float time;
 
-        public const float SPEED = 1f;
+        public const float SPEED = 20f;
 
         private Coroutine workoutCoroutine;
         private bool isPaused;
@@ -84,6 +89,8 @@ namespace MVC.App.UI.Workout
             {
                 exerciseTotalNumber += LogSession.Instance.WorkoutExercises[i].SetNumber;
             }
+
+            coach.SetActive(false);
         }
 
         public void SetCurrentExercise()
@@ -171,6 +178,10 @@ namespace MVC.App.UI.Workout
 
         private IEnumerator ExerciseCoroutine()
         {
+            video.clip = currentExercise.Video;
+            coach.SetActive(true);
+            video.Play();
+
             while (time < maxExerciseTime)
             {
                 // Handle Pause/Play
@@ -208,6 +219,8 @@ namespace MVC.App.UI.Workout
             exerciseDetail.text = "Time to breath !";
 
             repPanel.SetActive(false);
+            video.Stop();
+            coach.SetActive(false);
 
             maxRecoveryTime = currentExercise.RecoveryTime;
             int minutes = Mathf.FloorToInt(maxRecoveryTime / 60f);
@@ -276,6 +289,9 @@ namespace MVC.App.UI.Workout
             isPaused = !isPaused;
             WorkoutProgress.Instance.IsPaused = isPaused;
             pauseButton.image.sprite = isPaused ? resumeImage : pauseImage;
+
+            if (isPaused) video.Pause();
+            else video.Play();
         }
 
         void OnDestroy()

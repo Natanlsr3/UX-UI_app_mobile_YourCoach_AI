@@ -633,22 +633,25 @@ MonoBehaviour:
     RepNumber: 1
     Muscle: Leggs
     RecoveryTime: 60
+    Video: {fileID: 32900000, guid: 7be101891177546468201240daf368f8, type: 3}
+  - Name: Unilateral Lunge
+    ExercisePreview: {fileID: 21300000, guid: c9029157ef60a184ba5b65bee4916184, type: 3}
+    Duration: 20
+    Level: Beginner
+    SetNumber: 3
+    RepNumber: 10
+    Muscle: Quadriceps
+    RecoveryTime: 30
+    Video: {fileID: 32900000, guid: 3346ee16adafc4549934ab083f06c691, type: 3}
   - Name: Squat
     ExercisePreview: {fileID: 21300000, guid: b43b3a5224806d14fab0b1d868822734, type: 3}
-    Duration: 15
+    Duration: 40
     Level: Beginner
     SetNumber: 3
     RepNumber: 10
     Muscle: Quadriceps
     RecoveryTime: 10
-  - Name: Glute Bridge
-    ExercisePreview: {fileID: 21300000, guid: 735123677d1d9a046a2580f59b1f7c81, type: 3}
-    Duration: 30
-    Level: Intermediate
-    SetNumber: 3
-    RepNumber: 12
-    Muscle: Quadriceps
-    RecoveryTime: 30
+    Video: {fileID: 32900000, guid: 7be101891177546468201240daf368f8, type: 3}
   - Name: Bird-Dog
     ExercisePreview: {fileID: 21300000, guid: 4d28652563799b44bae5cdb08ebc2b8e, type: 3}
     Duration: 20
@@ -657,14 +660,16 @@ MonoBehaviour:
     RepNumber: 8
     Muscle: Back
     RecoveryTime: 20
-  - Name: Pull (Weights)
-    ExercisePreview: {fileID: 21300000, guid: 99eda2334a8de464d92e9c7b837bae67, type: 3}
+    Video: {fileID: 32900000, guid: 7be101891177546468201240daf368f8, type: 3}
+  - Name: Rowing (Weights)
+    ExercisePreview: {fileID: 21300000, guid: 37bee1dca1074dd46ae0c2bcec2ca12a, type: 3}
     Duration: 20
     Level: Beginner
     SetNumber: 3
     RepNumber: 10
     Muscle: Back
     RecoveryTime: 60
+    Video: {fileID: 32900000, guid: 3346ee16adafc4549934ab083f06c691, type: 3}
   noButton: {fileID: 892494491396727706}
   startButtonPrefab: {fileID: 2757716994847531246, guid: b6bc2f8eda098194aab2290ba05b8981, type: 3}
   Conversation: {fileID: 0}

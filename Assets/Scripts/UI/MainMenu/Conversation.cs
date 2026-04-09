@@ -127,7 +127,7 @@ namespace MVC.App.UI.MainMenu
             _workoutButton.onClick.AddListener(SetWorkout);
             FillMessage(userMessageContainer, "");
 
-            MakeCoachTalk();
+            //MakeCoachTalk();
         }
 
         private void SendUserMessage()
