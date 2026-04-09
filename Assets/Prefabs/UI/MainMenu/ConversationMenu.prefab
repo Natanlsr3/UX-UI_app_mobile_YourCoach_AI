@@ -198,7 +198,14 @@ MonoBehaviour:
       we'll adapt the exercises. If the pain is too intense or persistent, let me
       know and we'll stop the session so you can rest and pick it up later.
   - message: 
-    answer: Message 3
+    answer: So, did this session make you feel good? And most importantly, did you
+      experience any discomfort or pain in your back?
+  - message: 
+    answer: Glad to hear that. And on a scale of 1 to 10, how would you rate the
+      overall intensity of the workout?
+  - message: 
+    answer: That is perfect. It is exactly what we were aiming for today. Get some
+      rest, and we can slowly build up the pace next time.
   coachAnswersProfile2:
   - message: 
     answer: "Hi ! Great day to do some workout isn\u2019t it ?"
