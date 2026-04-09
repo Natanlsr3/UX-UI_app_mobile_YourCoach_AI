@@ -1110,6 +1110,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5409635301444530947, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: m_AudioOutputMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7415278474695757046, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -58,7 +58,7 @@ namespace MVC.App.UI.Workout
         private float maxRecoveryTime;
         private float time;
 
-        public const float SPEED = 20f;
+        public const float SPEED = 1f;
 
         private Coroutine workoutCoroutine;
         private bool isPaused;

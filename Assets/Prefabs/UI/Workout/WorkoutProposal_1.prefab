@@ -633,7 +633,7 @@ MonoBehaviour:
     RepNumber: 1
     Muscle: Leggs
     RecoveryTime: 60
-    Video: {fileID: 32900000, guid: 7be101891177546468201240daf368f8, type: 3}
+    Video: {fileID: 32900000, guid: f908c82978575ea4fbe0aacdc4d917dc, type: 3}
   - Name: Unilateral Lunge
     ExercisePreview: {fileID: 21300000, guid: c9029157ef60a184ba5b65bee4916184, type: 3}
     Duration: 20
@@ -654,22 +654,22 @@ MonoBehaviour:
     Video: {fileID: 32900000, guid: 7be101891177546468201240daf368f8, type: 3}
   - Name: Bird-Dog
     ExercisePreview: {fileID: 21300000, guid: 4d28652563799b44bae5cdb08ebc2b8e, type: 3}
-    Duration: 20
+    Duration: 65
     Level: Beginner
     SetNumber: 3
     RepNumber: 8
     Muscle: Back
     RecoveryTime: 20
-    Video: {fileID: 32900000, guid: 7be101891177546468201240daf368f8, type: 3}
+    Video: {fileID: 32900000, guid: 832c8de2e9c5b9148ac6347810e63a9a, type: 3}
   - Name: Rowing (Weights)
     ExercisePreview: {fileID: 21300000, guid: 37bee1dca1074dd46ae0c2bcec2ca12a, type: 3}
-    Duration: 20
+    Duration: 30
     Level: Beginner
     SetNumber: 3
     RepNumber: 10
     Muscle: Back
     RecoveryTime: 60
-    Video: {fileID: 32900000, guid: 3346ee16adafc4549934ab083f06c691, type: 3}
+    Video: {fileID: 32900000, guid: aeff6469808e89a44b4131d9cfc58635, type: 3}
   noButton: {fileID: 892494491396727706}
   startButtonPrefab: {fileID: 2757716994847531246, guid: b6bc2f8eda098194aab2290ba05b8981, type: 3}
   Conversation: {fileID: 0}

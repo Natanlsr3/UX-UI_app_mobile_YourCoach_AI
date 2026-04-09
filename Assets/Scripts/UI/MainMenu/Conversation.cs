@@ -119,10 +119,6 @@ namespace MVC.App.UI.MainMenu
 
         private void ProposeWorkout()
         {
-            GameObject message = Instantiate(coachMessageDisplay, coachMessageContainer);
-            message.GetComponentInChildren<TMP_Text>().text = "Get ready for your workout !";
-            FillMessage(userMessageContainer, "Get ready for your workout !");
-
             Button _workoutButton = Instantiate(workoutButton, coachMessageContainer).GetComponent<Button>();
             _workoutButton.onClick.AddListener(SetWorkout);
             FillMessage(userMessageContainer, "");
