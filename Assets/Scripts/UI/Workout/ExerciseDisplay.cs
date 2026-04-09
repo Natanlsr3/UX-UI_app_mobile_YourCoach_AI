@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace MVC.App.UI.Workout
 {
@@ -18,6 +19,7 @@ namespace MVC.App.UI.Workout
         public int RepNumber;
         public string Muscle;
         public float RecoveryTime;
+        public VideoClip Video;
     }
 
     public class ExerciseDisplay : MonoBehaviour
