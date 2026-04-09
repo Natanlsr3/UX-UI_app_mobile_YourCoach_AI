@@ -44,7 +44,7 @@ namespace MVC.App.UI.Workout
             float _durationMinutes = Mathf.Floor(_duration / 60f);
             float _durationSeconds = _duration % 60f;
             if (_durationMinutes >= 1 && _durationSeconds > 0) duration.text = _durationMinutes.ToString() + "m " + _durationSeconds.ToString() + "s";
-            else if (_durationMinutes >= 1) duration.text = _durationMinutes.ToString() + " min ";
+            else if (_durationMinutes >= 1) duration.text = _durationMinutes.ToString() + " min";
             else duration.text = _durationSeconds.ToString() + " sec";
 
             level.text = _level;

@@ -28,7 +28,7 @@ namespace MVC.App.UI.Workout
             detailButton.onClick.AddListener(SetWorkoutPreview);
             startButton.onClick.AddListener(StartWorkout);
 
-            workoutName.text = WorkoutSession.Instance.WorkoutName;
+            workoutName.text = LogSession.Instance.WorkoutName;
 
             WorkoutSessionManager.Instance.gameObject.SetActive(false);
         }
@@ -39,7 +39,7 @@ namespace MVC.App.UI.Workout
             if (isPreviewDisplayed)
             {
                 workoutPreview = Instantiate(workoutPreviewPrefab, transform).GetComponent<WorkoutPreview>();
-                workoutPreview.SetPreview("Upcoming Exercises", WorkoutSession.Instance.WorkoutExercises);
+                workoutPreview.SetPreview("Upcoming Exercises", LogSession.Instance.WorkoutExercises);
 
                 foreach (Image _arrow in arrows)
                 {

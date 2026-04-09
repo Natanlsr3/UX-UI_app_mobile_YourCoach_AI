@@ -53,6 +53,8 @@ namespace MVC.App.UI.Workout
         private float maxRecoveryTime;
         private float time;
 
+        public const float SPEED = 1f;
+
         private Coroutine workoutCoroutine;
         private bool isPaused;
 
@@ -77,18 +79,18 @@ namespace MVC.App.UI.Workout
             // Set total number of exercise
 
             exerciseTotalNumber = 0;
-            int _exerciseTypeNum = WorkoutSession.Instance.WorkoutExercises.Count;
+            int _exerciseTypeNum = LogSession.Instance.WorkoutExercises.Count;
             for (int i = 0; i < _exerciseTypeNum; i++)
             {
-                exerciseTotalNumber += WorkoutSession.Instance.WorkoutExercises[i].SetNumber;
+                exerciseTotalNumber += LogSession.Instance.WorkoutExercises[i].SetNumber;
             }
         }
 
         public void SetCurrentExercise()
         {
-            if (exerciseIndex > WorkoutSession.Instance.WorkoutExercises.Count - 1) return;
+            if (exerciseIndex > LogSession.Instance.WorkoutExercises.Count - 1) return;
 
-            currentExercise = WorkoutSession.Instance.WorkoutExercises[exerciseIndex];
+            currentExercise = LogSession.Instance.WorkoutExercises[exerciseIndex];
 
             exerciseName.text = currentExercise.Name;
             exerciseDetail.text = currentExercise.Muscle;
@@ -147,17 +149,22 @@ namespace MVC.App.UI.Workout
             time = preparationTime;
             while (time > 0f)
             {
-                time -= Time.deltaTime;
+                time -= Time.deltaTime * SPEED;
                 preparationDisplay.text = Mathf.CeilToInt(time).ToString();
 
                 yield return new WaitForEndOfFrame();
             }
 
-            yield return new WaitForSeconds(transitionDelay);
+            yield return new WaitForSeconds(transitionDelay / SPEED);
 
             StopCoroutine(workoutCoroutine);
 
             SetExerciseDisplay(true);
+            if (SoundManager.instance.soundSource.isPlaying)
+                SoundManager.instance.StopClip();
+            SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
+            if(!SoundManager.instance.soundSource.isPlaying)
+                SoundManager.instance.PlayClip();
             exerciseNumber++;
             exerciseProgressNumber++;
             WorkoutProgress.Instance.IsPaused = false;
@@ -174,8 +181,8 @@ namespace MVC.App.UI.Workout
                     yield return null;
                 }
 
-                time += Time.deltaTime;
-                repProgress += Time.deltaTime;
+                time += Time.deltaTime * SPEED;
+                repProgress += Time.deltaTime * SPEED;
                 if (repProgress >= repFrequency)
                 {
                     repProgress = 0f;
@@ -188,7 +195,7 @@ namespace MVC.App.UI.Workout
             EndDisplay(maxExerciseTime, true);
 
             WorkoutProgress.Instance.IsPaused = true;
-            yield return new WaitForSeconds(recoveryTransitionDelay);
+            yield return new WaitForSeconds(recoveryTransitionDelay / SPEED);
             WorkoutProgress.Instance.IsPaused = false;
 
             StopCoroutine(workoutCoroutine);
@@ -224,14 +231,14 @@ namespace MVC.App.UI.Workout
                     yield return null;
                 }
 
-                time += Time.deltaTime;
+                time += Time.deltaTime * SPEED;
                 UpdateTimeDisplay(maxRecoveryTime);
                 yield return new WaitForEndOfFrame();
             }
             EndDisplay(maxRecoveryTime);
 
             WorkoutProgress.Instance.IsPaused = true;
-            yield return new WaitForSeconds(transitionDelay);
+            yield return new WaitForSeconds(transitionDelay / SPEED);
             WorkoutProgress.Instance.IsPaused = false;
 
             StopCoroutine(workoutCoroutine);
@@ -252,9 +259,10 @@ namespace MVC.App.UI.Workout
 
         private IEnumerator EndSessionCoroutine()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(3f / SPEED);
 
             StopCoroutine(workoutCoroutine);
+            PlayerPrefs.SetInt("TrainingSessionDone", 0);
             SceneManager.LoadScene("Main");
         }
 

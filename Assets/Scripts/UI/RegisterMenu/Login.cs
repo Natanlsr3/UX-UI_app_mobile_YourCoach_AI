@@ -37,7 +37,7 @@ namespace MVC.App.UI.RegisterMenu
 
         private void ConnectUser()
         {
-            if (m_TypedUsername == username && m_TypedPassword == password) SceneManager.LoadScene("Main");
+            if (LogSession.Instance.ValidUser(m_TypedUsername, m_TypedPassword)) SceneManager.LoadScene("Main");
             else DisplayError(true);
         }
 

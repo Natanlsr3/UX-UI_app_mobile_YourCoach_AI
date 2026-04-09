@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using MVC.App.UI.MainMenu;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -14,9 +16,12 @@ namespace MVC.App.UI.Workout
         [SerializeField] private Button noButton;
         [SerializeField] private GameObject startButtonPrefab;
 
+        [HideInInspector] public Conversation Conversation;
+
         protected override void Start()
         {
             base.Start();
+
             SetPreview(m_WorkoutName, m_Exercies);
 
             noButton.onClick.AddListener(RefuseProposal);
@@ -24,8 +29,8 @@ namespace MVC.App.UI.Workout
             Button _startButton = Instantiate(startButtonPrefab, m_ExerciseContainer).GetComponent<Button>();
             _startButton.onClick.AddListener(StartWorkout);
 
-            WorkoutSession.Instance.WorkoutExercises = m_Exercies;
-            WorkoutSession.Instance.WorkoutName = m_WorkoutName;
+            LogSession.Instance.WorkoutExercises = m_Exercies;
+            LogSession.Instance.WorkoutName = m_WorkoutName;
         }
 
         private void StartWorkout()
@@ -35,6 +40,7 @@ namespace MVC.App.UI.Workout
 
         private void RefuseProposal()
         {
+            Conversation.SetConversationDisplay(true);
             Leave();
         }
 
