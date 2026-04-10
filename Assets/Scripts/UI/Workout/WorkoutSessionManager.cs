@@ -91,6 +91,8 @@ namespace MVC.App.UI.Workout
             {
                 exerciseTotalNumber += LogSession.Instance.WorkoutExercises[i].SetNumber;
             }
+
+            coach.SetActive(false);
         }
 
         public void SetCurrentExercise()
@@ -180,6 +182,10 @@ namespace MVC.App.UI.Workout
 
         private IEnumerator ExerciseCoroutine()
         {
+            video.clip = currentExercise.Video;
+            coach.SetActive(true);
+            video.Play();
+
             while (time < maxExerciseTime)
             {
                 // Handle Pause/Play
@@ -217,6 +223,8 @@ namespace MVC.App.UI.Workout
             exerciseDetail.text = "Time to breath !";
 
             repPanel.SetActive(false);
+            video.Stop();
+            coach.SetActive(false);
 
             maxRecoveryTime = currentExercise.RecoveryTime;
             int minutes = Mathf.FloorToInt(maxRecoveryTime / 60f);
@@ -296,6 +304,9 @@ namespace MVC.App.UI.Workout
             isPaused = !isPaused;
             WorkoutProgress.Instance.IsPaused = isPaused;
             pauseButton.image.sprite = isPaused ? resumeImage : pauseImage;
+
+            if (isPaused) video.Pause();
+            else video.Play();
         }
 
         void OnDestroy()
