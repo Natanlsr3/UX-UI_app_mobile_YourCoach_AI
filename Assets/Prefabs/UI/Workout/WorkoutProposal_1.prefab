@@ -638,7 +638,7 @@ MonoBehaviour:
     ExercisePreview: {fileID: 21300000, guid: c9029157ef60a184ba5b65bee4916184, type: 3}
     Duration: 20
     Level: Beginner
-    SetNumber: 1
+    SetNumber: 4
     RepNumber: 10
     Muscle: Quadriceps
     RecoveryTime: 30
@@ -647,7 +647,7 @@ MonoBehaviour:
     ExercisePreview: {fileID: 21300000, guid: b43b3a5224806d14fab0b1d868822734, type: 3}
     Duration: 40
     Level: Beginner
-    SetNumber: 1
+    SetNumber: 4
     RepNumber: 10
     Muscle: Quadriceps
     RecoveryTime: 10
@@ -656,7 +656,7 @@ MonoBehaviour:
     ExercisePreview: {fileID: 21300000, guid: 4d28652563799b44bae5cdb08ebc2b8e, type: 3}
     Duration: 65
     Level: Beginner
-    SetNumber: 1
+    SetNumber: 3
     RepNumber: 8
     Muscle: Back
     RecoveryTime: 20
@@ -665,21 +665,21 @@ MonoBehaviour:
     ExercisePreview: {fileID: 21300000, guid: 37bee1dca1074dd46ae0c2bcec2ca12a, type: 3}
     Duration: 30
     Level: Beginner
-    SetNumber: 1
+    SetNumber: 3
     RepNumber: 10
     Muscle: Back
     RecoveryTime: 60
     Video: {fileID: 32900000, guid: aeff6469808e89a44b4131d9cfc58635, type: 3}
   m_OptExercises:
-  - Name: Wall Extension
-    ExercisePreview: {fileID: 0}
-    Duration: 30
+  - Name: Wall Back Extension
+    ExercisePreview: {fileID: 21300000, guid: d58e5ec058b9a9e44907f66a834e37f1, type: 3}
+    Duration: 40
     Level: Beginner
-    SetNumber: 1
+    SetNumber: 3
     RepNumber: 10
     Muscle: Back
-    RecoveryTime: 60
-    Video: {fileID: 0}
+    RecoveryTime: 30
+    Video: {fileID: 32900000, guid: f908c82978575ea4fbe0aacdc4d917dc, type: 3}
   noButton: {fileID: 892494491396727706}
   startButtonPrefab: {fileID: 2757716994847531246, guid: b6bc2f8eda098194aab2290ba05b8981, type: 3}
   Conversation: {fileID: 0}
