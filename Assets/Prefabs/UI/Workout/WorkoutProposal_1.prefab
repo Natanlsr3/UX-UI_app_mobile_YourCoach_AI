@@ -633,7 +633,7 @@ MonoBehaviour:
     RepNumber: 1
     Muscle: Leggs
     RecoveryTime: 60
-    Video: {fileID: 32900000, guid: f908c82978575ea4fbe0aacdc4d917dc, type: 3}
+    Video: {fileID: 32900000, guid: 7c120c8745a09ca40a7e6b1ecf938117, type: 3}
   - Name: Unilateral Lunge
     ExercisePreview: {fileID: 21300000, guid: c9029157ef60a184ba5b65bee4916184, type: 3}
     Duration: 20
