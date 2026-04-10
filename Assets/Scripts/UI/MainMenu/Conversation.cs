@@ -138,6 +138,7 @@ namespace MVC.App.UI.MainMenu
             userMessageField.text = "";
             userMessagePlaceholder.text = defaultMessageText;
 
+            print(userMessage);
             FillMessage(coachMessageContainer, userMessage);
 
             StartCoroutine(AnswerCoroutine());

@@ -5,12 +5,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace MVC.App.UI.Workout
 {
     public class WorkoutSessionManager : MonoBehaviour
     {
         [SerializeField] private Button backButton;
+        [SerializeField] private Button skipButton;
+
+        [Header("Coach Display")]
+        [SerializeField] private VideoPlayer video;
+        [SerializeField] private GameObject coach;
 
         [Header("Set x Rep")]
         [SerializeField] private GameObject repPanel;
@@ -74,6 +80,7 @@ namespace MVC.App.UI.Workout
 
         void Start()
         {
+            skipButton.onClick.AddListener(SkipExercise);
             pauseButton.onClick.AddListener(SetPause);
 
             // Set total number of exercise
@@ -249,6 +256,17 @@ namespace MVC.App.UI.Workout
                 exerciseNumber = 0;
             }
 
+            SetCurrentExercise();
+        }
+
+        private void SkipExercise()
+        {
+            video.Stop();
+            coach.SetActive(false);
+
+            StopAllCoroutines();
+            exerciseIndex++;
+            exerciseNumber = 0;
             SetCurrentExercise();
         }
 
