@@ -199,7 +199,7 @@ namespace MVC.App.UI.Workout
                 SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex + 1);
             else
                 SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
-            if (!SoundManager.instance.soundSource.isPlaying)
+            if (!SoundManager.instance.soundSource.isPlaying && exerciseNumber==0)
                 SoundManager.instance.PlayClip();
             exerciseNumber++;
             exerciseProgressNumber++;
@@ -279,7 +279,7 @@ namespace MVC.App.UI.Workout
         private IEnumerator RecoveryCoroutine()
         {
             currentPhase = WorkoutPhase.Recovery;
-            if (currentExercise.Name.Contains("Bird"))
+            if (currentExercise.Name.Contains("Bird") && exerciseNumber >= currentExercise.SetNumber)
             {
                 SoundManager.instance.GoToClip(SoundManager.instance.recoveryLines, 0);
                 SoundManager.instance.PlayClip();
@@ -386,8 +386,10 @@ namespace MVC.App.UI.Workout
                 SoundManager.instance.PlayClip();
             }
             yield return new WaitWhile(()=>SoundManager.instance.soundSource.isPlaying);
-            if (exerciseNumber >= currentExercise.SetNumber)
+            if (exerciseIndex >= LogSession.Instance.WorkoutExercises.Count-1)
             {
+                exerciseTotalNumber -= (currentExercise.SetNumber - exerciseNumber);
+                exerciseTotalNumber += (LogSession.Instance.OptExercises[0].SetNumber - exerciseNumber);
                 //!!!!!Warning works only in this demo would have to rework the system to include on the fly modification later
                 LogSession.Instance.WorkoutExercises[exerciseIndex] = LogSession.Instance.OptExercises[0];
                 exerciseNumber = 0;
