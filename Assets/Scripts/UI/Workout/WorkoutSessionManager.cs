@@ -13,6 +13,7 @@ namespace MVC.App.UI.Workout
     {
         [SerializeField] private Button backButton;
         [SerializeField] private Button skipButton;
+        [SerializeField] private Button microButton;
 
         [Header("Coach Display")]
         [SerializeField] private VideoPlayer video;
@@ -86,6 +87,7 @@ namespace MVC.App.UI.Workout
         {
             skipButton.onClick.AddListener(SkipExercise);
             pauseButton.onClick.AddListener(SetPause);
+            microButton.onClick.AddListener(PrepareToSkip);
 
             // Set total number of exercise
 
@@ -104,6 +106,8 @@ namespace MVC.App.UI.Workout
         /// </summary>
         public void SetCurrentExercise()
         {
+            
+            
             if (exerciseIndex > LogSession.Instance.WorkoutExercises.Count - 1) return;
 
             currentExercise = LogSession.Instance.WorkoutExercises[exerciseIndex];
@@ -191,7 +195,10 @@ namespace MVC.App.UI.Workout
             SetExerciseDisplay(true);
             if (SoundManager.instance.soundSource.isPlaying)
                 SoundManager.instance.StopClip();
-            SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
+            if (currentExercise.Name.Contains("Wall"))
+                SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex + 1);
+            else
+                SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
             if (!SoundManager.instance.soundSource.isPlaying)
                 SoundManager.instance.PlayClip();
             exerciseNumber++;
@@ -272,7 +279,11 @@ namespace MVC.App.UI.Workout
         private IEnumerator RecoveryCoroutine()
         {
             currentPhase = WorkoutPhase.Recovery;
-
+            if (currentExercise.Name.Contains("Bird"))
+            {
+                SoundManager.instance.GoToClip(SoundManager.instance.recoveryLines, 0);
+                SoundManager.instance.PlayClip();
+            }
             while (time < maxRecoveryTime)
             {
                 // Handle Pause/Play
@@ -309,7 +320,8 @@ namespace MVC.App.UI.Workout
         {
             video.Stop();
             coach.SetActive(false);
-
+            if (SoundManager.instance.soundSource.isPlaying)
+                SoundManager.instance.StopClip();
             StopAllCoroutines();
             AddRemainingTime();
 
@@ -334,6 +346,57 @@ namespace MVC.App.UI.Workout
 
             if (exerciseProgressNumber >= exerciseTotalNumber) SetEndSession();
         }
+        /// <summary>
+        /// Prepare to skip to the "alternate" exercise 
+        /// </summary>
+        private void PrepareToSkip()
+        {
+            video.Stop();
+            coach.SetActive(false);
+            StopCoroutine(workoutCoroutine);
+            
+            if (currentExercise.Name.Contains("Rowing"))
+            {
+                //To test may be removed if working weirdly
+                AddRemainingTime();
+                StartCoroutine(SkipToAlternate());
+
+            }
+
+            else
+            {
+                video.Play();
+                coach.SetActive(true);
+                workoutCoroutine = StartCoroutine(PrepareExerciseCoroutine());
+            }
+           
+        }
+
+        /// <summary>
+        /// Skip to "Alternate" exercise
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator SkipToAlternate()
+        {
+            
+            SoundManager.instance.StopClip();
+            if (SoundManager.instance.hasLineEnded)
+            {
+                SoundManager.instance.GoToClip(SoundManager.instance.altExercisesLines, 0);
+                SoundManager.instance.PlayClip();
+            }
+            yield return new WaitWhile(()=>SoundManager.instance.soundSource.isPlaying);
+            if (exerciseNumber >= currentExercise.SetNumber)
+            {
+                //!!!!!Warning works only in this demo would have to rework the system to include on the fly modification later
+                LogSession.Instance.WorkoutExercises[exerciseIndex] = LogSession.Instance.OptExercises[0];
+                exerciseNumber = 0;
+            }
+            
+            SetCurrentExercise();
+
+        }
+
 
         /// <summary>
         /// Add time remaining to the timer when skipping a phase

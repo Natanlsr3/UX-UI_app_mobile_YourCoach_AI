@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 8730018219650041850}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -633,6 +633,7 @@ MonoBehaviour:
     RepNumber: 15
     Muscle: Quadriceps
     RecoveryTime: 10
+    Video: {fileID: 0}
   - Name: Squat
     ExercisePreview: {fileID: 21300000, guid: b43b3a5224806d14fab0b1d868822734, type: 3}
     Duration: 30
@@ -641,6 +642,7 @@ MonoBehaviour:
     RepNumber: 15
     Muscle: Quadriceps
     RecoveryTime: 10
+    Video: {fileID: 0}
   - Name: Reverse Lunge
     ExercisePreview: {fileID: 21300000, guid: d859cf5235875ee46bc4f68e66e4c5fb, type: 3}
     Duration: 30
@@ -649,6 +651,7 @@ MonoBehaviour:
     RepNumber: 10
     Muscle: Quadriceps
     RecoveryTime: 30
+    Video: {fileID: 0}
   - Name: Glute Bridge
     ExercisePreview: {fileID: 21300000, guid: 735123677d1d9a046a2580f59b1f7c81, type: 3}
     Duration: 20
@@ -657,6 +660,7 @@ MonoBehaviour:
     RepNumber: 20
     Muscle: Glutes
     RecoveryTime: 30
+    Video: {fileID: 0}
   - Name: Dead bug
     ExercisePreview: {fileID: 21300000, guid: d859cf5235875ee46bc4f68e66e4c5fb, type: 3}
     Duration: 45
@@ -665,6 +669,7 @@ MonoBehaviour:
     RepNumber: 12
     Muscle: Abdominals
     RecoveryTime: 30
+    Video: {fileID: 0}
   - Name: Plank with lateral tap
     ExercisePreview: {fileID: 21300000, guid: 6bbe249f31a67514aba6677e804db63c, type: 3}
     Duration: 15
@@ -673,6 +678,7 @@ MonoBehaviour:
     RepNumber: 10
     Muscle: Abdominals
     RecoveryTime: 30
+    Video: {fileID: 0}
   - Name: Mountain Climber
     ExercisePreview: {fileID: 21300000, guid: 90c978faeab885249aef8dbbb6fc7067, type: 3}
     Duration: 30
@@ -681,6 +687,8 @@ MonoBehaviour:
     RepNumber: 20
     Muscle: Quadriceps
     RecoveryTime: 20
+    Video: {fileID: 0}
+  m_OptExercises: []
   noButton: {fileID: 892494491396727706}
   startButtonPrefab: {fileID: 2757716994847531246, guid: b6bc2f8eda098194aab2290ba05b8981, type: 3}
   Conversation: {fileID: 0}

@@ -41,6 +41,7 @@ namespace MVC.App.UI.MainMenu
         [SerializeField] private VideoPlayer coachVideo;
         [SerializeField] private VideoClip coachIdle;
         [SerializeField] private VideoClip coachTalking;
+        [SerializeField] private VideoClip coachListening;
         [Serializable]
         private struct Talk
         {
@@ -50,6 +51,10 @@ namespace MVC.App.UI.MainMenu
         [SerializeField] private List<Talk> coachAnswersProfile1 = new List<Talk>();
         [SerializeField] private List<Talk> coachAnswersProfile2 = new List<Talk>();
         [SerializeField] private float answerDelay;
+
+        private enum CoachState { Void, Idle, Talking, Listening }
+
+        private CoachState currentCoachState = CoachState.Void;
 
         private PostProcessVolume ppVolume;
 
@@ -103,6 +108,7 @@ namespace MVC.App.UI.MainMenu
         private void SetMessage(string _message)
         {
             userMessage = _message;
+            MakeCoachListen();
         }
 
         private void TrySendMessage()
@@ -211,29 +217,50 @@ namespace MVC.App.UI.MainMenu
 
         private void MakeCoachIdle()
         {
+            if (currentCoachState == CoachState.Idle) return;
+
             coachVideo.Stop();
             coachVideo.clip = coachIdle;
             coachVideo.isLooping = true;
 
             coachVideo.time = 0f;
             coachVideo.Play();
+
+            currentCoachState = CoachState.Idle;
         }
 
         private void MakeCoachTalk()
         {
+            if (currentCoachState == CoachState.Talking) return;
+
             coachVideo.Stop();
             coachVideo.clip = coachTalking;
-            coachVideo.isLooping = false;
+            coachVideo.isLooping = true;
 
             coachVideo.time = 0f;
             coachVideo.Play();
             StartCoroutine(TalkCoroutine());
+
+            currentCoachState = CoachState.Talking;
+        }
+
+        private void MakeCoachListen()
+        {
+            if (currentCoachState == CoachState.Listening) return;
+
+            coachVideo.Stop();
+            coachVideo.clip = coachListening;
+            coachVideo.isLooping = true;
+
+            coachVideo.time = 0f;
+            coachVideo.Play();
+
+            currentCoachState = CoachState.Listening;
         }
 
         private IEnumerator TalkCoroutine()
         {
-            yield return new WaitForSeconds(7.5f);
-
+            yield return new WaitWhile(() => SoundManager.instance.soundSource.isPlaying);
             MakeCoachIdle();
             StopCoroutine(TalkCoroutine());
         }
