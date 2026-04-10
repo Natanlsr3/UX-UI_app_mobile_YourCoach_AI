@@ -59,6 +59,10 @@ namespace MVC.App.UI.Workout
         private float maxRecoveryTime;
         private float time;
 
+        private enum WorkoutPhase { Explication, Exercise, Recovery };
+
+        private WorkoutPhase currentPhase;
+
         public const float SPEED = 1f;
 
         private Coroutine workoutCoroutine;
@@ -95,6 +99,9 @@ namespace MVC.App.UI.Workout
             coach.SetActive(false);
         }
 
+        /// <summary>
+        /// Update the current exercise to be displayed
+        /// </summary>
         public void SetCurrentExercise()
         {
             if (exerciseIndex > LogSession.Instance.WorkoutExercises.Count - 1) return;
@@ -153,8 +160,14 @@ namespace MVC.App.UI.Workout
 
         }
 
+        /// <summary>
+        /// Coroutine to handle preparation before exercise
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator PrepareExerciseCoroutine()
         {
+            currentPhase = WorkoutPhase.Explication;
+
             time = preparationTime;
             while (time > 0f)
             {
@@ -167,12 +180,19 @@ namespace MVC.App.UI.Workout
             yield return new WaitForSeconds(transitionDelay / SPEED);
 
             StopCoroutine(workoutCoroutine);
+            SetExercise();
+        }
 
+        /// <summary>
+        /// Initialize the exercise phase
+        /// </summary>
+        private void SetExercise()
+        {
             SetExerciseDisplay(true);
             if (SoundManager.instance.soundSource.isPlaying)
                 SoundManager.instance.StopClip();
             SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
-            if(!SoundManager.instance.soundSource.isPlaying)
+            if (!SoundManager.instance.soundSource.isPlaying)
                 SoundManager.instance.PlayClip();
             exerciseNumber++;
             exerciseProgressNumber++;
@@ -180,8 +200,14 @@ namespace MVC.App.UI.Workout
             workoutCoroutine = StartCoroutine(ExerciseCoroutine());
         }
 
+        /// <summary>
+        /// Coroutine to handle the exercises
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator ExerciseCoroutine()
         {
+            currentPhase = WorkoutPhase.Exercise;
+
             video.clip = currentExercise.Video;
             coach.SetActive(true);
             video.Play();
@@ -217,6 +243,9 @@ namespace MVC.App.UI.Workout
             else SetRecovery();
         }
 
+        /// <summary>
+        /// Initialize the recovery phase
+        /// </summary>
         private void SetRecovery()
         {
             exerciseName.text = "Recovery";
@@ -236,8 +265,14 @@ namespace MVC.App.UI.Workout
             workoutCoroutine = StartCoroutine(RecoveryCoroutine());
         }
 
+        /// <summary>
+        /// Coroutine that handle recovery
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator RecoveryCoroutine()
         {
+            currentPhase = WorkoutPhase.Recovery;
+
             while (time < maxRecoveryTime)
             {
                 // Handle Pause/Play
@@ -267,22 +302,72 @@ namespace MVC.App.UI.Workout
             SetCurrentExercise();
         }
 
+        /// <summary>
+        /// Skip a phase of the training
+        /// </summary>
         private void SkipExercise()
         {
             video.Stop();
             coach.SetActive(false);
 
             StopAllCoroutines();
-            exerciseIndex++;
-            exerciseNumber = 0;
-            SetCurrentExercise();
+            AddRemainingTime();
+
+            switch (currentPhase)
+            {
+                case WorkoutPhase.Explication:
+                    SetExercise();
+                    break;
+                case WorkoutPhase.Exercise:
+                    EndDisplay(maxExerciseTime, true);
+                    SetRecovery();
+                    break;
+                case WorkoutPhase.Recovery:
+                    if (exerciseNumber >= currentExercise.SetNumber)
+                    {
+                        exerciseIndex++;
+                        exerciseNumber = 0;
+                    }
+                    SetCurrentExercise();
+                    break;
+            }
+
+            if (exerciseProgressNumber >= exerciseTotalNumber) SetEndSession();
         }
 
+        /// <summary>
+        /// Add time remaining to the timer when skipping a phase
+        /// </summary>
+        private void AddRemainingTime()
+        {
+            float _remainingTime;
+            switch (currentPhase)
+            {
+                case WorkoutPhase.Exercise:
+                    _remainingTime = maxExerciseTime - time;
+                    break;
+                case WorkoutPhase.Recovery:
+                    _remainingTime = maxRecoveryTime - time;
+                    break;
+                default:
+                    _remainingTime = 0f;
+                    break;
+            }
+            WorkoutProgress.Instance.AddTime(_remainingTime);
+        }
+
+        /// <summary>
+        /// Set the end of the training
+        /// </summary>
         private void SetEndSession()
         {
             workoutCoroutine = StartCoroutine(EndSessionCoroutine());
         }
 
+        /// <summary>
+        /// Coroutine to call at the end of the training
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator EndSessionCoroutine()
         {
             yield return new WaitForSeconds(3f / SPEED);
@@ -299,6 +384,9 @@ namespace MVC.App.UI.Workout
             repPanel.SetActive(_display);
         }
 
+        /// <summary>
+        /// Pause/Resume the timer and the video of the training
+        /// </summary>
         private void SetPause()
         {
             isPaused = !isPaused;
