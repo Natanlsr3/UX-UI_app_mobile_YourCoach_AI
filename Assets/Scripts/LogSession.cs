@@ -21,6 +21,7 @@ namespace MVC.App
         public int UserIndex { get => userIndex; }
 
         [HideInInspector] public List<Exercise> WorkoutExercises = new List<Exercise>();
+        [HideInInspector] public List<Exercise> OptExercises = new List<Exercise>();
         [HideInInspector] public string WorkoutName;
 
         private static LogSession instance;

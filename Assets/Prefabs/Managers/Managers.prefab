@@ -56,10 +56,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c7e52512b69ae6a46af62ddd47465fff, type: 3}
   - {fileID: 8300000, guid: 422bd8d9d735cfc44b529278c8726cb0, type: 3}
   - {fileID: 8300000, guid: 6ca3d9bc0d0e7e9449e2f85de363f709, type: 3}
-  - {fileID: 8300000, guid: 43ad9a462e4ec444d97a5eb7d011a301, type: 3}
   - {fileID: 8300000, guid: 18e3f9b88733b9647bc5ed3fe47795e4, type: 3}
-  - {fileID: 8300000, guid: bf6d349aa591b7246836d4ce66d65c23, type: 3}
   - {fileID: 8300000, guid: 880ae7cf98549da44b0671595738ac4e, type: 3}
+  recoveryLines:
+  - {fileID: 8300000, guid: 43ad9a462e4ec444d97a5eb7d011a301, type: 3}
+  altExercisesLines:
+  - {fileID: 8300000, guid: bf6d349aa591b7246836d4ce66d65c23, type: 3}
   warmupLines:
   - {fileID: 8300000, guid: d446ad3490a1037438572d1a89e98d0a, type: 3}
   - {fileID: 8300000, guid: 41842b30937e459499675d8a3d94ce89, type: 3}

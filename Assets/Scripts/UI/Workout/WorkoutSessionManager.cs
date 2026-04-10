@@ -106,6 +106,8 @@ namespace MVC.App.UI.Workout
         /// </summary>
         public void SetCurrentExercise()
         {
+            
+            
             if (exerciseIndex > LogSession.Instance.WorkoutExercises.Count - 1) return;
 
             currentExercise = LogSession.Instance.WorkoutExercises[exerciseIndex];
@@ -193,7 +195,10 @@ namespace MVC.App.UI.Workout
             SetExerciseDisplay(true);
             if (SoundManager.instance.soundSource.isPlaying)
                 SoundManager.instance.StopClip();
-            SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
+            if (currentExercise.Name.Contains("Wall"))
+                SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex + 1);
+            else
+                SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
             if (!SoundManager.instance.soundSource.isPlaying)
                 SoundManager.instance.PlayClip();
             exerciseNumber++;
@@ -276,7 +281,7 @@ namespace MVC.App.UI.Workout
             currentPhase = WorkoutPhase.Recovery;
             if (currentExercise.Name.Contains("Bird"))
             {
-                SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex + 1);
+                SoundManager.instance.GoToClip(SoundManager.instance.recoveryLines, 0);
                 SoundManager.instance.PlayClip();
             }
             while (time < maxRecoveryTime)
@@ -377,15 +382,17 @@ namespace MVC.App.UI.Workout
             SoundManager.instance.StopClip();
             if (SoundManager.instance.hasLineEnded)
             {
-                SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex + 1);
+                SoundManager.instance.GoToClip(SoundManager.instance.altExercisesLines, 0);
                 SoundManager.instance.PlayClip();
             }
             yield return new WaitWhile(()=>SoundManager.instance.soundSource.isPlaying);
             if (exerciseNumber >= currentExercise.SetNumber)
             {
-                exerciseIndex++;
+                //!!!!!Warning works only in this demo would have to rework the system to include on the fly modification later
+                LogSession.Instance.WorkoutExercises[exerciseIndex] = LogSession.Instance.OptExercises[0];
                 exerciseNumber = 0;
             }
+            
             SetCurrentExercise();
 
         }

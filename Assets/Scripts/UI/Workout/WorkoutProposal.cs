@@ -30,6 +30,7 @@ namespace MVC.App.UI.Workout
             _startButton.onClick.AddListener(StartWorkout);
 
             LogSession.Instance.WorkoutExercises = m_Exercies;
+            LogSession.Instance.OptExercises = m_OptExercises;
             LogSession.Instance.WorkoutName = m_WorkoutName;
         }
 

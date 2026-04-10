@@ -7,6 +7,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance { get; private set; }
     public List<AudioClip> conversationLines = new List<AudioClip>();
     public List<AudioClip> exercicesLines = new List<AudioClip>();
+    public List<AudioClip> recoveryLines = new List<AudioClip>();
+    public List<AudioClip> altExercisesLines = new List<AudioClip>();
     public List<AudioClip> warmupLines = new List<AudioClip>();
     public List<AudioClip> stretchingLines = new List<AudioClip>();
     public List<AudioClip> motivationLines = new List<AudioClip>();

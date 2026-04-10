@@ -15,6 +15,7 @@ namespace MVC.App.UI.Workout
         [SerializeField] protected GameObject m_ExerciseDisplayPrefab;
 
         [SerializeField] protected List<Exercise> m_Exercies;
+        [SerializeField] protected List<Exercise> m_OptExercises;
 
         protected virtual void Start()
         {
