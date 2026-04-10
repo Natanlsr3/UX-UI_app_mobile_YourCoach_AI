@@ -199,7 +199,7 @@ namespace MVC.App.UI.Workout
                 SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex + 1);
             else
                 SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
-            if (!SoundManager.instance.soundSource.isPlaying)
+            if (!SoundManager.instance.soundSource.isPlaying && exerciseNumber==0)
                 SoundManager.instance.PlayClip();
             exerciseNumber++;
             exerciseProgressNumber++;
