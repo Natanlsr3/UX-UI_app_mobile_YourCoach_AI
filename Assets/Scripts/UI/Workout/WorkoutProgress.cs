@@ -103,6 +103,8 @@ namespace MVC.App.UI.Workout
             }
         }
 
+        public void AddTime(float _time){ time += _time; }
+
         private void OnDestroy()
         {
             instance = null;
