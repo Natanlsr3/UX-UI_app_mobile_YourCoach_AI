@@ -274,7 +274,11 @@ namespace MVC.App.UI.Workout
         private IEnumerator RecoveryCoroutine()
         {
             currentPhase = WorkoutPhase.Recovery;
-
+            if (currentExercise.Name.Contains("Bird"))
+            {
+                SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex + 1);
+                SoundManager.instance.PlayClip();
+            }
             while (time < maxRecoveryTime)
             {
                 // Handle Pause/Play
@@ -311,7 +315,8 @@ namespace MVC.App.UI.Workout
         {
             video.Stop();
             coach.SetActive(false);
-
+            if (SoundManager.instance.soundSource.isPlaying)
+                SoundManager.instance.StopClip();
             StopAllCoroutines();
             AddRemainingTime();
 
@@ -345,7 +350,7 @@ namespace MVC.App.UI.Workout
             coach.SetActive(false);
             StopCoroutine(workoutCoroutine);
             
-            if (currentExercise.Name.Contains("dumbbell"))
+            if (currentExercise.Name.Contains("Rowing"))
             {
                 //To test may be removed if working weirdly
                 AddRemainingTime();
