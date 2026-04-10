@@ -106,8 +106,6 @@ namespace MVC.App.UI.Workout
         /// </summary>
         public void SetCurrentExercise()
         {
-            
-            
             if (exerciseIndex > LogSession.Instance.WorkoutExercises.Count - 1) return;
 
             currentExercise = LogSession.Instance.WorkoutExercises[exerciseIndex];
@@ -203,7 +201,8 @@ namespace MVC.App.UI.Workout
                 SoundManager.instance.PlayClip();
             exerciseNumber++;
             exerciseProgressNumber++;
-            WorkoutProgress.Instance.IsPaused = false;
+
+            ForcePlay();
             workoutCoroutine = StartCoroutine(ExerciseCoroutine());
         }
 
@@ -455,6 +454,26 @@ namespace MVC.App.UI.Workout
         private void SetPause()
         {
             isPaused = !isPaused;
+            WorkoutProgress.Instance.IsPaused = isPaused;
+            if (isPaused)
+            {
+                SoundManager.instance.PauseClip();
+                pauseButton.image.sprite = resumeImage ;
+            }
+            else
+            {
+                SoundManager.instance.PlayClip();
+                pauseButton.image.sprite = pauseImage;
+            }
+            
+
+            if (isPaused) video.Pause();
+            else video.Play();
+        }
+
+        private void ForcePlay()
+        {
+            isPaused = false;
             WorkoutProgress.Instance.IsPaused = isPaused;
             pauseButton.image.sprite = isPaused ? resumeImage : pauseImage;
 
