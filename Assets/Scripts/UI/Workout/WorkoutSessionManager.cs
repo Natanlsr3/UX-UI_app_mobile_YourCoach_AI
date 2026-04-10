@@ -279,7 +279,7 @@ namespace MVC.App.UI.Workout
         private IEnumerator RecoveryCoroutine()
         {
             currentPhase = WorkoutPhase.Recovery;
-            if (currentExercise.Name.Contains("Bird"))
+            if (currentExercise.Name.Contains("Bird") && exerciseNumber >= currentExercise.SetNumber)
             {
                 SoundManager.instance.GoToClip(SoundManager.instance.recoveryLines, 0);
                 SoundManager.instance.PlayClip();
