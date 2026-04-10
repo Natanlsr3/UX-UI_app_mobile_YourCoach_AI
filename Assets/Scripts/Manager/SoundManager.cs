@@ -7,8 +7,11 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance { get; private set; }
     public List<AudioClip> conversationLines = new List<AudioClip>();
     public List<AudioClip> exercicesLines = new List<AudioClip>();
+    public List<AudioClip> warmupLines = new List<AudioClip>();
+    public List<AudioClip> stretchingLines = new List<AudioClip>();
     public List<AudioClip> motivationLines = new List<AudioClip>();
     public AudioSource soundSource;
+    public bool hasLineEnded = false;
 
     private void Awake()
     {
@@ -45,6 +48,14 @@ public class SoundManager : MonoBehaviour
     public void PlayClip()
     {
         soundSource.Play();
+        hasLineEnded = false;
+        StartCoroutine(CheckAudioEnd());
+    }
+
+    IEnumerator CheckAudioEnd()
+    {
+        yield return new WaitWhile(()=>soundSource.isPlaying);
+        hasLineEnded=true;
     }
 
     public void PauseClip()
@@ -55,5 +66,7 @@ public class SoundManager : MonoBehaviour
     public void StopClip()
     { 
         soundSource.Stop();
+        hasLineEnded = true;
+        StopAllCoroutines();
     }
 }

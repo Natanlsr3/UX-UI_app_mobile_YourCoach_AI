@@ -13,6 +13,7 @@ namespace MVC.App.UI.Workout
     {
         [SerializeField] private Button backButton;
         [SerializeField] private Button skipButton;
+        [SerializeField] private Button microButton;
 
         [Header("Coach Display")]
         [SerializeField] private VideoPlayer video;
@@ -86,6 +87,7 @@ namespace MVC.App.UI.Workout
         {
             skipButton.onClick.AddListener(SkipExercise);
             pauseButton.onClick.AddListener(SetPause);
+            microButton.onClick.AddListener(PrepareToSkip);
 
             // Set total number of exercise
 
@@ -334,6 +336,55 @@ namespace MVC.App.UI.Workout
 
             if (exerciseProgressNumber >= exerciseTotalNumber) SetEndSession();
         }
+        /// <summary>
+        /// Prepare to skip to the "alternate" exercise 
+        /// </summary>
+        private void PrepareToSkip()
+        {
+            video.Stop();
+            coach.SetActive(false);
+            StopCoroutine(workoutCoroutine);
+            
+            if (currentExercise.Name.Contains("dumbbell"))
+            {
+                //To test may be removed if working weirdly
+                AddRemainingTime();
+                StartCoroutine(SkipToAlternate());
+
+            }
+
+            else
+            {
+                video.Play();
+                coach.SetActive(true);
+                workoutCoroutine = StartCoroutine(PrepareExerciseCoroutine());
+            }
+           
+        }
+
+        /// <summary>
+        /// Skip to "Alternate" exercise
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator SkipToAlternate()
+        {
+            
+            SoundManager.instance.StopClip();
+            if (SoundManager.instance.hasLineEnded)
+            {
+                SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex + 1);
+                SoundManager.instance.PlayClip();
+            }
+            yield return new WaitWhile(()=>SoundManager.instance.soundSource.isPlaying);
+            if (exerciseNumber >= currentExercise.SetNumber)
+            {
+                exerciseIndex++;
+                exerciseNumber = 0;
+            }
+            SetCurrentExercise();
+
+        }
+
 
         /// <summary>
         /// Add time remaining to the timer when skipping a phase
