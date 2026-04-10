@@ -388,6 +388,8 @@ namespace MVC.App.UI.Workout
             yield return new WaitWhile(()=>SoundManager.instance.soundSource.isPlaying);
             if (exerciseIndex >= LogSession.Instance.WorkoutExercises.Count-1)
             {
+                exerciseTotalNumber -= (currentExercise.SetNumber - exerciseNumber);
+                exerciseTotalNumber += (LogSession.Instance.OptExercises[0].SetNumber - exerciseNumber);
                 //!!!!!Warning works only in this demo would have to rework the system to include on the fly modification later
                 LogSession.Instance.WorkoutExercises[exerciseIndex] = LogSession.Instance.OptExercises[0];
                 exerciseNumber = 0;
