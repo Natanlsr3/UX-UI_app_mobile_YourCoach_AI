@@ -119,22 +119,23 @@ namespace MVC.App.UI.MainMenu
 
         private void ProposeWorkout()
         {
+            //Instantiate and configurate the workout button
             Button _workoutButton = Instantiate(workoutButton, coachMessageContainer).GetComponent<Button>();
             _workoutButton.onClick.AddListener(SetWorkout);
             FillMessage(userMessageContainer, "");
-
-            //MakeCoachTalk();
         }
 
         private void SendUserMessage()
         {
+            string _messageText = userMessage;
+
             GameObject message = Instantiate(userMessageDisplay, userMessageContainer);
-            message.GetComponentInChildren<TMP_Text>().text = userMessage;
+            message.GetComponentInChildren<TMP_Text>().text = _messageText;
 
             userMessageField.text = "";
             userMessagePlaceholder.text = defaultMessageText;
 
-            FillMessage(coachMessageContainer, userMessage);
+            FillMessage(coachMessageContainer, _messageText);
 
             StartCoroutine(AnswerCoroutine());
         }
@@ -151,10 +152,12 @@ namespace MVC.App.UI.MainMenu
 
         private void SendCoachMessage(string _message)
         {
-            GameObject message = Instantiate(coachMessageDisplay, coachMessageContainer);
-            message.GetComponentInChildren<TMP_Text>().text = _message;
+            string _messageText = _message;
 
-            FillMessage(userMessageContainer, _message);
+            GameObject message = Instantiate(coachMessageDisplay, coachMessageContainer);
+            message.GetComponentInChildren<TMP_Text>().text = _messageText;
+
+            FillMessage(userMessageContainer, _messageText);
             SoundManager.instance.StopClip();
             SoundManager.instance.GoToClip(SoundManager.instance.conversationLines, conversationStep);
             //SoundManager.instance.NextClip(SoundManager.instance.conversationLines);
@@ -169,6 +172,7 @@ namespace MVC.App.UI.MainMenu
 
         private void FillMessage(Transform _container, string _message)
         {
+            //Spawn an invisible message to create a gap in the chosen container
             GameObject fill = Instantiate(fillMessage, _container);
             fill.GetComponentInChildren<TMP_Text>().text = _message;
         }
@@ -232,23 +236,6 @@ namespace MVC.App.UI.MainMenu
 
             MakeCoachIdle();
             StopCoroutine(TalkCoroutine());
-        }
-
-        private void CheckMessage(string _userMessage)
-        {
-            List<Talk> _coachAnswers;
-            if (LogSession.Instance.UserIndex == 0) _coachAnswers = coachAnswersProfile1;
-            else _coachAnswers = coachAnswersProfile2;
-
-            int _answersNum = _coachAnswers.Count;
-            for (int i = 0; i < _answersNum; i++)
-            {
-                if (_userMessage == _coachAnswers[i].message)
-                {
-                    SendCoachMessage(_coachAnswers[i].answer);
-                    break;
-                }
-            }
         }
     }
 }

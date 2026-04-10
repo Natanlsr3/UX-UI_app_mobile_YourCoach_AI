@@ -12,6 +12,7 @@ namespace MVC.App.UI.Workout
     public class WorkoutSessionManager : MonoBehaviour
     {
         [SerializeField] private Button backButton;
+        [SerializeField] private Button skipButton;
 
         [Header("Coach Display")]
         [SerializeField] private VideoPlayer video;
@@ -79,6 +80,7 @@ namespace MVC.App.UI.Workout
 
         void Start()
         {
+            skipButton.onClick.AddListener(SkipExercise);
             pauseButton.onClick.AddListener(SetPause);
 
             // Set total number of exercise
@@ -167,9 +169,11 @@ namespace MVC.App.UI.Workout
             StopCoroutine(workoutCoroutine);
 
             SetExerciseDisplay(true);
-            SoundManager.instance.StopClip();
-            SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseNumber);
-            SoundManager.instance.PlayClip();
+            if (SoundManager.instance.soundSource.isPlaying)
+                SoundManager.instance.StopClip();
+            SoundManager.instance.GoToClip(SoundManager.instance.exercicesLines, exerciseIndex);
+            if(!SoundManager.instance.soundSource.isPlaying)
+                SoundManager.instance.PlayClip();
             exerciseNumber++;
             exerciseProgressNumber++;
             WorkoutProgress.Instance.IsPaused = false;
@@ -260,6 +264,17 @@ namespace MVC.App.UI.Workout
                 exerciseNumber = 0;
             }
 
+            SetCurrentExercise();
+        }
+
+        private void SkipExercise()
+        {
+            video.Stop();
+            coach.SetActive(false);
+
+            StopAllCoroutines();
+            exerciseIndex++;
+            exerciseNumber = 0;
             SetCurrentExercise();
         }
 
