@@ -443,7 +443,7 @@ namespace MVC.App.UI.Workout
 
         private void SetExerciseDisplay(bool _display)
         {
-            preparationDisplay.gameObject.SetActive(!_display);
+            preparationDisplay.gameObject.SetActive(false);
             exercisePanel.SetActive(_display);
             repPanel.SetActive(_display);
         }

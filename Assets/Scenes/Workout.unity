@@ -1762,6 +1762,10 @@ PrefabInstance:
       propertyPath: microButton
       value: 
       objectReference: {fileID: 1236980118}
+    - target: {fileID: 6891664617941727951, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: preparationTime
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7415278474695757046, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
