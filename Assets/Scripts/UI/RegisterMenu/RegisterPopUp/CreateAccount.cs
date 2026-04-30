@@ -23,6 +23,7 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
             if (m_TypedUsername != m_Username)
             {
                 OnAccountCreated?.Invoke(m_TypedUsername, m_TypedPassword);
+                LogSession.Instance.CreateUser(m_TypedUsername, m_TypedPassword);
                 LeavePopUp();
             }
             else DisplayError(true);
