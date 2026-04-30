@@ -37,7 +37,11 @@ namespace MVC.App.UI.RegisterMenu
 
         private void ConnectUser()
         {
-            if (LogSession.Instance.ValidUser(m_TypedUsername, m_TypedPassword)) SceneManager.LoadScene("Main");
+            if (LogSession.Instance.ValidUser(m_TypedUsername, m_TypedPassword))
+            {
+                if (LogSession.Instance.CurrentUser.FreshAccount) SceneManager.LoadScene("NewUser");
+                else SceneManager.LoadScene("Main");
+            }
             else DisplayError(true);
         }
 

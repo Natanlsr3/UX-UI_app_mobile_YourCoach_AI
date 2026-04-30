@@ -10,12 +10,30 @@ namespace MVC.App
     public class LogSession : MonoBehaviour
     {
         [Serializable]
-        private struct User
+        public enum FitnessFrequency { Regularly = 0, Sometimes = 1, AWhile = 2, FirstTime = 3 }
+
+        [Serializable]
+        public enum FitnessGoal { Health = 0, Aesthetics = 1, Performance = 2, Mobility = 3, Preparation = 4 }
+
+        [Serializable]
+        public struct User
         {
-            public string Name;
+            public string UserName;
             public string Password;
+
+            public string FirstName;
+            public string LastName;
+
+            public int Age;
+            public float Weight;
+
+            public FitnessFrequency Experience;
+            public FitnessGoal Goal;
+
+            public bool FreshAccount;
         }
-        [SerializeField] private List<User> possibleUsers;
+        [SerializeField] private List<User> userList;
+        public User CurrentUser { get => userList[userIndex]; }
 
         private int userIndex;
         public int UserIndex { get => userIndex; }
@@ -23,6 +41,7 @@ namespace MVC.App
         [HideInInspector] public List<Exercise> WorkoutExercises = new List<Exercise>();
         [HideInInspector] public List<Exercise> OptExercises = new List<Exercise>();
         [HideInInspector] public string WorkoutName;
+
 
         private static LogSession instance;
         public static LogSession Instance { get => instance; }
@@ -45,21 +64,33 @@ namespace MVC.App
 
         public bool ValidUser(string _name, string _password)
         {
-            bool _isValidUser = false;
-
-            int _userNum = possibleUsers.Count;
+            int _userNum = userList.Count;
             for (int i = 0; i < _userNum; i++)
             {
-                User _user = possibleUsers[i];
-                if (_name == _user.Name && _password == _user.Password)
+                User _user = userList[i];
+                if (_name == _user.UserName && _password == _user.Password)
                 {
                     userIndex = i;
-                    _isValidUser = true;
-                    break;
-                }
+                    return true;
+                } 
             }
 
-            return _isValidUser;
+            return false;
+        }
+
+        public void SetUser(User _user)
+        {
+            userList[userIndex] = _user;
+        }
+
+        public void CreateUser(string _username, string _password)
+        {
+            User _newUser = new User();
+            _newUser.UserName = _username;
+            _newUser.Password = _password;
+            _newUser.FreshAccount = true;
+
+            userList.Add(_newUser);
         }
 
         void OnDestroy()
