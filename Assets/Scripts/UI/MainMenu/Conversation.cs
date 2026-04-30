@@ -48,8 +48,7 @@ namespace MVC.App.UI.MainMenu
             [SerializeField] public string message;
             [SerializeField] public string answer;
         }
-        [SerializeField] private List<Talk> coachAnswersProfile1 = new List<Talk>();
-        [SerializeField] private List<Talk> coachAnswersProfile2 = new List<Talk>();
+        [SerializeField] private List<Talk> coachAnswersProfile = new List<Talk>();
         [SerializeField] private float answerDelay;
 
         private enum CoachState { Void, Idle, Talking, Listening }
@@ -84,25 +83,26 @@ namespace MVC.App.UI.MainMenu
 
             MakeCoachIdle();
 
-            if (LogSession.Instance.UserIndex == 0)
+            if (PlayerPrefs.HasKey("TrainingSessionDone"))
             {
-                if (PlayerPrefs.HasKey("TrainingSessionDone"))
-                {
-                    conversationStep = 2;
-                }
-                
-                SendCoachMessage(coachAnswersProfile1[conversationStep].answer);
+                conversationStep = 2;
             }
-            else 
-            {
-                if (PlayerPrefs.HasKey("TrainingSessionDone"))
-                {
-                    conversationStep = 2;
-                }
-                SoundManager.instance.GoToClip(SoundManager.instance.conversationLines, conversationStep);
-                SoundManager.instance.PlayClip();
-                SendCoachMessage(coachAnswersProfile2[conversationStep].answer);
-            }
+            SendCoachMessage(coachAnswersProfile[conversationStep].answer);
+
+            //if (LogSession.Instance.UserIndex == 0)
+            //{
+
+            //}
+            //else 
+            //{
+            //    if (PlayerPrefs.HasKey("TrainingSessionDone"))
+            //    {
+            //        conversationStep = 2;
+            //    }
+            //    SoundManager.instance.GoToClip(SoundManager.instance.conversationLines, conversationStep);
+            //    SoundManager.instance.PlayClip();
+            //    SendCoachMessage(coachAnswersProfile2[conversationStep].answer);
+            //}
         }
 
         private void SetMessage(string _message)
@@ -150,8 +150,7 @@ namespace MVC.App.UI.MainMenu
         {
             yield return new WaitForSeconds(answerDelay);
 
-            if (LogSession.Instance.UserIndex == 0) SendCoachMessage(coachAnswersProfile1[conversationStep].answer);
-            else SendCoachMessage(coachAnswersProfile2[conversationStep].answer);
+            SendCoachMessage(coachAnswersProfile[conversationStep].answer);
 
             StopCoroutine(AnswerCoroutine());
         }
