@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Button = UnityEngine.UI.Button;
 
 public class NewUser : MonoBehaviour
@@ -11,8 +12,8 @@ public class NewUser : MonoBehaviour
 
     [SerializeField] private GameObject errorPanel;
 
-    [SerializeField] private TMP_InputField firstName;
-    [SerializeField] private TMP_InputField lastName;
+    [SerializeField] private TMP_InputField firstNameField;
+    [SerializeField] private TMP_InputField lastNameField;
 
     [Header("Age")]
     [SerializeField] private TMP_Dropdown age;
@@ -20,9 +21,7 @@ public class NewUser : MonoBehaviour
     [SerializeField] private int maxAge;
 
     [Header("Weight")]
-    [SerializeField] private TMP_Dropdown weight;
-    [SerializeField] private int minWeight;
-    [SerializeField] private int maxWeight;
+    [SerializeField] private TMP_InputField weightField;
 
     void Start()
     {
@@ -30,28 +29,19 @@ public class NewUser : MonoBehaviour
 
         // Clear dropdown
         age.ClearOptions();
-        weight.ClearOptions();
 
         // Add options to dropdown
-
         List<string> ageList = new List<string>();
         for (int i = minAge; i <= maxAge; i++)
         {
             ageList.Add(i.ToString());
         }
         age.AddOptions(ageList);
-
-        List<string> weightList = new List<string>();
-        for (int i = minWeight; i <= maxWeight; i++)
-        {
-            weightList.Add(i + "kg");
-        }
-        weight.AddOptions(weightList);
     }
 
     private void ConnectToMainMenu()
     {
-        if (firstName.text != "" & lastName.text != "") SceneManager.LoadScene("Main");
+        if (firstNameField.text != "" & lastNameField.text != "" & weightField.text != "") SceneManager.LoadScene("Main");
         else errorPanel.SetActive(true);
     }
 }
