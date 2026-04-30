@@ -64,7 +64,7 @@ namespace MVC.App.UI.Workout
 
         private WorkoutPhase currentPhase;
 
-        public const float SPEED = 1f;
+        public const float SPEED = 100f;
 
         private Coroutine workoutCoroutine;
         private bool isPaused;

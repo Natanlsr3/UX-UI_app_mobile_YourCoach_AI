@@ -13,8 +13,6 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
         [SerializeField] protected Button m_ConfirmButton;
         [SerializeField] protected Button m_LeavePopUpButton;
 
-        protected string m_Username;
-
         protected const string HIDE = "Hide";
 
         public event Action OnLeftPopUp;
@@ -24,10 +22,6 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
             base.Start();
             m_ConfirmButton.onClick.AddListener(Confirm);
             m_LeavePopUpButton.onClick.AddListener(LeavePopUp);
-        }
-        public void SetUserInfo(string _username)
-        {
-            m_Username = _username;
         }
 
         protected virtual void Confirm() { }
