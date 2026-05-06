@@ -11,6 +11,7 @@ namespace MVC.App.UI
     public class NewUser : MonoBehaviour
     {
         [SerializeField] private Button startButton;
+        [SerializeField] private Button previousButton;
 
         [SerializeField] private GameObject errorPanel;
 
@@ -30,10 +31,23 @@ namespace MVC.App.UI
         [SerializeField] private TMP_Dropdown experience;
         [SerializeField] private TMP_Dropdown goal;
 
+        private Animator anim;
+        private const string FORWARD = "MoveForward";
+        private const string BACKWARD = "MoveBackward";
+
+        private int step;
+
+        private TextMeshProUGUI startButtonText;
+        private const string START = "START";
+        private const string NEXT = "NEXT";
 
         void Start()
         {
-            startButton.onClick.AddListener(ConnectToMainMenu);
+            anim = GetComponent<Animator>();
+            startButtonText = startButton.GetComponentInChildren<TextMeshProUGUI>();
+            startButton.onClick.AddListener(delegate{ MoveToNextStep();});
+            previousButton.onClick.AddListener(delegate{ MoveToNextStep(false);});
+            previousButton.gameObject.SetActive(false);
 
             // Clear dropdown
             age.ClearOptions();
@@ -47,29 +61,54 @@ namespace MVC.App.UI
             age.AddOptions(_ageList);
         }
 
+        private void MoveToNextStep(bool _isForward = true)
+        {
+            if (_isForward)
+            {
+                if (step == 0)
+                {
+                    if (firstNameField.text != "" & lastNameField.text != "" & weightField.text != "")
+                    {
+                        errorPanel.SetActive(false);
+
+                        anim.SetTrigger(FORWARD);
+                        startButtonText.text = START;
+                        previousButton.gameObject.SetActive(true);
+
+                        step++;
+                    }
+                    else errorPanel.SetActive(true);
+                }
+                else if (step == 1) ConnectToMainMenu();
+            }
+            else
+            {
+                step--;
+                anim.SetTrigger(BACKWARD);
+                startButtonText.text = NEXT;
+                previousButton.gameObject.SetActive(false);
+            }
+        }
+
         private void ConnectToMainMenu()
         {
-            if (firstNameField.text != "" & lastNameField.text != "" & weightField.text != "")
-            {
-                // Set new user
+            // Set new user
 
-                LogSession.User _user = LogSession.Instance.CurrentUser;
+            LogSession.User _user = LogSession.Instance.CurrentUser;
 
-                _user.FirstName = firstNameField.text;
-                _user.LastName = lastNameField.text;
-                _user.Age = age.value + minAge;
-                float weight;
-                if (float.TryParse(weightField.text, out weight)) _user.Weight = weight;
-                _user.Experience = (LogSession.FitnessFrequency)experience.value;
-                _user.Goal = (LogSession.FitnessGoal)goal.value;
-                _user.FreshAccount = false;
+            _user.FirstName = firstNameField.text;
+            _user.LastName = lastNameField.text;
+            _user.Age = age.value + minAge;
+            float weight;
+            if (float.TryParse(weightField.text, out weight)) _user.Weight = weight;
+            _user.Experience = (LogSession.FitnessFrequency)experience.value;
+            _user.Goal = (LogSession.FitnessGoal)goal.value;
+            _user.FreshAccount = false;
 
-                LogSession.Instance.SetUser(_user);
+            LogSession.Instance.SetUser(_user);
 
-                // Go to main menu
-                SceneManager.LoadScene("Main");
-            }
-            else errorPanel.SetActive(true);
+            // Go to main menu
+            SceneManager.LoadScene("Main");
         }
     }
 }
