@@ -20,7 +20,7 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
 
         private void CreateNewAccount()
         {
-            if (m_TypedUsername != m_Username)
+            if (!LogSession.Instance.ExistingUser(m_TypedUsername) && m_TypedUsername != "" && m_TypedPassword != "")
             {
                 OnAccountCreated?.Invoke(m_TypedUsername, m_TypedPassword);
                 LogSession.Instance.CreateUser(m_TypedUsername, m_TypedPassword);

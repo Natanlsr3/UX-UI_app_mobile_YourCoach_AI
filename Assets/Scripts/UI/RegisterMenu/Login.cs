@@ -21,8 +21,6 @@ namespace MVC.App.UI.RegisterMenu
 
         [Header("UserLogin")]
         [SerializeField] private Button loginButton;
-        [SerializeField] private string username;
-        [SerializeField] private string password;
 
         private const string IS_ACTIVE = "IsActive";
 
@@ -52,15 +50,7 @@ namespace MVC.App.UI.RegisterMenu
             m_Anim.SetBool(IS_ACTIVE, false);
 
             ForgetPassword window = Instantiate(forgetPasswordScreen, transform.parent).GetComponent<ForgetPassword>();
-            window.SetUserInfo(username);
-            window.OnPasswordReset += ChangePassword;
             window.OnLeftPopUp += DisplayLogin;
-        }
-
-        // To change when BDD added
-        private void ChangePassword(string _newPassword)
-        {
-            password = _newPassword;
         }
 
         private void SetCreateAccountWindow()
@@ -70,16 +60,7 @@ namespace MVC.App.UI.RegisterMenu
             m_Anim.SetBool(IS_ACTIVE, false);
 
             CreateAccount window = Instantiate(createAccountScreen, transform.parent).GetComponent<CreateAccount>();
-            window.SetUserInfo(username);
-            window.OnAccountCreated += ChangeUser;
             window.OnLeftPopUp += DisplayLogin;
-        }
-
-        // To change when BDD added
-        private void ChangeUser(string _newUsername, string _newPassword)
-        {
-            username = _newUsername;
-            password = _newPassword;
         }
 
         private void DisplayLogin() { m_Anim.SetBool(IS_ACTIVE, true); }

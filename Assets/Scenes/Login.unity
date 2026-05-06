@@ -588,15 +588,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7390324157a5b4496d73c12b6c6ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userList:
+  UserList:
   - UserName: Admin
     Password: MVC
-    FirstName: Jack
-    LastName: Sullivan
-    Age: 30
-    Weight: 80
-    Experience: 0
-    Goal: 1
+    FirstName: Quentin
+    LastName: Marthe-Rose
+    Age: 22
+    Weight: 60
+    Experience: 1
+    Goal: 0
     FreshAccount: 0
   WorkoutExercises: []
   OptExercises: []

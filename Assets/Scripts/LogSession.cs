@@ -32,8 +32,8 @@ namespace MVC.App
 
             public bool FreshAccount;
         }
-        [SerializeField] private List<User> userList;
-        public User CurrentUser { get => userList[userIndex]; }
+        public List<User> UserList;
+        public User CurrentUser { get => UserList[userIndex]; }
 
         private int userIndex;
         public int UserIndex { get => userIndex; }
@@ -64,10 +64,10 @@ namespace MVC.App
 
         public bool ValidUser(string _name, string _password)
         {
-            int _userNum = userList.Count;
+            int _userNum = UserList.Count;
             for (int i = 0; i < _userNum; i++)
             {
-                User _user = userList[i];
+                User _user = UserList[i];
                 if (_name == _user.UserName && _password == _user.Password)
                 {
                     userIndex = i;
@@ -78,9 +78,24 @@ namespace MVC.App
             return false;
         }
 
+        public bool ExistingUser(string _name)
+        {
+            int _userNum = UserList.Count;
+            for (int i = 0; i < _userNum; i++)
+            {
+                User _user = UserList[i];
+                if (_name == _user.UserName)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public void SetUser(User _user)
         {
-            userList[userIndex] = _user;
+            UserList[userIndex] = _user;
         }
 
         public void CreateUser(string _username, string _password)
@@ -90,7 +105,37 @@ namespace MVC.App
             _newUser.Password = _password;
             _newUser.FreshAccount = true;
 
-            userList.Add(_newUser);
+            UserList.Add(_newUser);
+        }
+
+        public User FindUser(string _username)
+        {
+            int _userNum = UserList.Count;
+            for (int i = 0; i < _userNum; i++)
+            {
+                User _user = UserList[i];
+                if (_username == _user.UserName)
+                {
+                    return _user;
+                }
+            }
+
+            return new User();
+        }
+
+        public int FindUserIndex(string _username)
+        {
+            int _userNum = UserList.Count;
+            for (int i = 0; i < _userNum; i++)
+            {
+                User _user = UserList[i];
+                if (_username == _user.UserName)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
 
         void OnDestroy()
