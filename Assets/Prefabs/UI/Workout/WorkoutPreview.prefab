@@ -128,7 +128,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1500, y: 0}
+  m_SizeDelta: {x: 1800, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2409932498731308094
 CanvasRenderer:
@@ -369,6 +369,7 @@ MonoBehaviour:
   m_ExerciseContainer: {fileID: 8310137042393708924}
   m_ExerciseDisplayPrefab: {fileID: 3306305346889929870, guid: e97a318d8317405469242260930abea5, type: 3}
   m_Exercies: []
+  m_OptExercises: []
 --- !u!1 &9182267460300268873
 GameObject:
   m_ObjectHideFlags: 0
