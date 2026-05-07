@@ -35,7 +35,6 @@ namespace MVC.App.UI.MainMenu
         [Header("Workout")] 
         [SerializeField] private GameObject workoutProposal;
         [SerializeField] private GameObject workoutButton;
-        [SerializeField] private Button triggerButton;
 
         [Header("Coach")]
         [SerializeField] private VideoPlayer coachVideo;
@@ -78,8 +77,6 @@ namespace MVC.App.UI.MainMenu
             userMessageField.onValueChanged.AddListener(SetMessage);
             sendButton.onClick.AddListener(TrySendMessage);
             voiceButton.onClick.AddListener(SetVoiceMessage);
-
-            triggerButton.onClick.AddListener(ProposeWorkout);
 
             MakeCoachIdle();
 
