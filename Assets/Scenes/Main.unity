@@ -659,10 +659,10 @@ PrefabInstance:
     - target: {fileID: 4634136343202743238, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 32900000, guid: c93cc70a82ce87a4aa1febc3db6cf671, type: 3}
     - target: {fileID: 4634136343202743238, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5097606292764658111, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_AnchorMax.y
