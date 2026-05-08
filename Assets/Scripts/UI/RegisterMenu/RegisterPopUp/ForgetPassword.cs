@@ -9,6 +9,7 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
 {
     public class ForgetPassword : RegisterPopUp
     {
+        [SerializeField] private TextMeshProUGUI titleText;
         public event Action<string> OnPasswordReset;
 
         private void ResetPassword()
@@ -29,6 +30,11 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
         {
             base.Confirm();
             ResetPassword();
+        }
+
+        public void SetTitleText(string _title)
+        {
+            titleText.text = _title;
         }
     }
 

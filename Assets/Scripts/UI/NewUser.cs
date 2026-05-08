@@ -98,7 +98,7 @@ namespace MVC.App.UI
 
             _user.FirstName = firstNameField.text;
             _user.LastName = lastNameField.text;
-            _user.Age = age.value + minAge;
+            _user.Age = age.value;
             float weight;
             if (float.TryParse(weightField.text, out weight)) _user.Weight = weight;
             _user.Experience = (LogSession.FitnessFrequency)experience.value;

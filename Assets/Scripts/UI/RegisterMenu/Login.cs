@@ -50,6 +50,7 @@ namespace MVC.App.UI.RegisterMenu
             m_Anim.SetBool(IS_ACTIVE, false);
 
             ForgetPassword window = Instantiate(forgetPasswordScreen, transform.parent).GetComponent<ForgetPassword>();
+            window.SetTitleText("Forgot Password");
             window.OnLeftPopUp += DisplayLogin;
         }
 
