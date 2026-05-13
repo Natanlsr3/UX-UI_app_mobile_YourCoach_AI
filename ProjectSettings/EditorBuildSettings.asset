@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SecondaryMenu/Statistics.unity
     guid: 90180326f6a9c31498f90a1950b91c68
   - enabled: 1
-    path: Assets/Scenes/SecondaryMenu/Rewards.unity
+    path: Assets/Scenes/SecondaryMenu/Challenges.unity
     guid: 0a936063866610e47863283553960cac
   - enabled: 1
     path: Assets/Scenes/SecondaryMenu/Training.unity
