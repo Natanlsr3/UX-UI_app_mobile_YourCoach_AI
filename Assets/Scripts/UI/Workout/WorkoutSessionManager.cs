@@ -437,6 +437,9 @@ namespace MVC.App.UI.Workout
             yield return new WaitForSeconds(3f / SPEED);
 
             StopCoroutine(workoutCoroutine);
+
+            ChallengeTracker.Instance.Progress(ChallengeTracker.ChallengeType.CompleteWorkout, 1f);
+
             PlayerPrefs.SetInt("TrainingSessionDone", 0);
             SceneManager.LoadScene("Main");
         }
