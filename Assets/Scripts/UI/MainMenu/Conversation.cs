@@ -85,6 +85,8 @@ namespace MVC.App.UI.MainMenu
                 conversationStep = 2;
             }
             SendCoachMessage(coachAnswersProfile[conversationStep].answer);
+
+            ChallengeTracker.Instance.Progress(ChallengeTracker.ChallengeType.Connexion, 1f);
         }
 
         private void SetMessage(string _message)

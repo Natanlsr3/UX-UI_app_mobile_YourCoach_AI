@@ -11,7 +11,7 @@ namespace MVC.App.UI.MainMenu
         [SerializeField] private Button moreButton;
         [SerializeField] private Transform buttonContainer;
 
-        private List<string> secondaryMenus = new List<string>() { "Profile", "Statistics", "Rewards", "Training", "Settings" };
+        private List<string> secondaryMenus = new List<string>() { "Profile", "Statistics", "Challenges", "Training", "Settings" };
 
         private Animator anim;
         private const string IS_DISPLAYED = "IsDisplayed";

@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 5278451563017256153}
   - component: {fileID: 7584491155422352189}
   - component: {fileID: 5663379498340805083}
-  - component: {fileID: 4595265544197985812}
+  - component: {fileID: 3589672411566257352}
   m_Layer: 5
   m_Name: ChallengeMenu
   m_TagString: Untagged
@@ -512,7 +512,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4595265544197985812
+--- !u!114 &3589672411566257352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -521,10 +521,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7210918162111703410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a57ecc6adfd6f469adbff14b05e34a, type: 3}
+  m_Script: {fileID: 11500000, guid: db70429b6524f53408c42a7d55a4a436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_BackButton: {fileID: 2149137191658018713}
+  challengeDisplay: {fileID: 4897666552728944604, guid: c7309fd878c8a6d4eb8f9b6832efb032, type: 3}
+  challengeDisplayContainer: {fileID: 504821499325637105}
 --- !u!1 &7420344027646557473
 GameObject:
   m_ObjectHideFlags: 0
