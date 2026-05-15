@@ -604,29 +604,9 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2712552057315606869, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 2712552057315606869, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 3483214416669236704, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -250
-      objectReference: {fileID: 0}
     - target: {fileID: 3947660833907072015, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_Name
       value: ConversationMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3998086059441043234, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3998086059441043234, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 7509606364839720190, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_SizeDelta.y

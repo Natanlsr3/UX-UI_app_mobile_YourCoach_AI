@@ -468,6 +468,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: WorkoutMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7932963897397146322, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 8112
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932963897397146322, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 4704
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932963897397146322, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1628
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932963897397146322, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -209
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

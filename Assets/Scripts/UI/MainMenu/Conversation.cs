@@ -85,21 +85,6 @@ namespace MVC.App.UI.MainMenu
                 conversationStep = 2;
             }
             SendCoachMessage(coachAnswersProfile[conversationStep].answer);
-
-            //if (LogSession.Instance.UserIndex == 0)
-            //{
-
-            //}
-            //else 
-            //{
-            //    if (PlayerPrefs.HasKey("TrainingSessionDone"))
-            //    {
-            //        conversationStep = 2;
-            //    }
-            //    SoundManager.instance.GoToClip(SoundManager.instance.conversationLines, conversationStep);
-            //    SoundManager.instance.PlayClip();
-            //    SendCoachMessage(coachAnswersProfile2[conversationStep].answer);
-            //}
         }
 
         private void SetMessage(string _message)
@@ -162,7 +147,6 @@ namespace MVC.App.UI.MainMenu
             FillMessage(userMessageContainer, _messageText);
             SoundManager.instance.StopClip();
             SoundManager.instance.GoToClip(SoundManager.instance.conversationLines, conversationStep);
-            //SoundManager.instance.NextClip(SoundManager.instance.conversationLines);
             SoundManager.instance.PlayClip();
             conversationStep++;
             
