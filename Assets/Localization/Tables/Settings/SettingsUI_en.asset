@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: SettingsUI_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d847bd2ccf2665d428fcbd70716a8bae, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7779934388224
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8156431892480
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8287944294400
+    m_Localized: Mute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8530551226368
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8666635419648
+    m_Localized: French
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9086946623488
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9769443770368
+    m_Localized: Spanish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9878860578816
+    m_Localized: Time Zone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076261302272
+    m_Localized: Auto detect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10280876228608
+    m_Localized: Notifications
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10686985519104
+    m_Localized: 'From :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10859803426816
+    m_Localized: 'To :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10929688920064
+    m_Localized: Theme
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

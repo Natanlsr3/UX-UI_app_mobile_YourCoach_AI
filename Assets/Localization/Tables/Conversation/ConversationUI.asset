@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: ConversationUI
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 7be32495832544a41a90dd5c612695c5, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: a534d485a39fd704994963ff4cc67a22, type: 2}
+  - {fileID: 11400000, guid: 887161c0ed8d6b44c9c5ab03123c5d42, type: 2}
+  - {fileID: 11400000, guid: b9fcc888fddc72f409a4b088da04b672, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: db12abbc4cf7525478610ee9e8339f77
+  m_SerializeEntries:
+  - m_GUID: 13668f059d5ccd74bbde0b9c43d63102
+    m_Address: Assets/Localization/Tables/Challenges/ChallengesUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21a6a6247fc187d4598922b07ede0d5f
+    m_Address: Assets/Localization/Tables/Login/LoginUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b0cf709c990a694e884d48cee773e5b
+    m_Address: Assets/Localization/Tables/Workout/WorkoutUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7be32495832544a41a90dd5c612695c5
+    m_Address: Assets/Localization/Tables/Conversation/ConversationUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bad067fc434f682409dcd08eb978a17b
+    m_Address: Assets/Localization/Tables/Profile/ProfileUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c698aff1a7e35a141b072689f39583f6
+    m_Address: Assets/Localization/Tables/Login/ForgotPassword/ForgotPasswordUI Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cba0437f9af75c940ba154c01dfcc7dc
+    m_Address: Assets/Localization/Tables/Login/NewUser/NewUserUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d847bd2ccf2665d428fcbd70716a8bae
+    m_Address: Assets/Localization/Tables/SettingsUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0b12fa8883a67b48a66bccd43bfbc22
+    m_Address: Assets/Localization/Tables/Statistics/StatisticsUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: e4876f2c50462264c9a7d3f2a44fb3b6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 46a33628291d3454b807a98fef464a9e, type: 2}
+    - {fileID: 11400000, guid: 3158036dcb1fac54db91c0a353d6e16e, type: 2}

@@ -36,9 +36,9 @@ namespace MVC.App.UI.SecondaryMenu.Stats
         private void SetWeekCalories()
         {
             // Get current day of the week
-            int currentDay = 0;
-            if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday) currentDay = 6;
-            else currentDay = (int)DateTime.Today.DayOfWeek - 1;
+            int _currentDay = 0;
+            if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday) _currentDay = 6;
+            else _currentDay = (int)DateTime.Today.DayOfWeek - 1;
 
             // Calculate total calories burnt during the week
             float _totalCaloriesBurnt = 0f;
@@ -51,26 +51,26 @@ namespace MVC.App.UI.SecondaryMenu.Stats
             // Display the stats with the right ratio between them
             CalorieStat _stat;
             float _ratio;
-            bool isCurrentDay;
+            bool _isCurrentDay;
 
             for (int i = 0; i < _daysNum; i++)
             {
-                if (i == currentDay) isCurrentDay = true;
-                else isCurrentDay = false;
+                if (i == _currentDay) _isCurrentDay = true;
+                else _isCurrentDay = false;
 
                 _ratio = caloriesBurntPerDay[i] / _totalCaloriesBurnt;
                 _stat = weekCaloriesContainer.GetChild(i).GetComponent<CalorieStat>();
-                _stat.SetValue(_ratio, isCurrentDay);
+                _stat.SetValue(_ratio, _isCurrentDay);
             }
         }
 
         private void SetMonthCalories()
         {
             // Get current week of the month
-            DateTime firstDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            int firstDayOffset = (int)firstDate.DayOfWeek;
-            if (firstDate.DayOfWeek == DayOfWeek.Sunday) firstDayOffset = 7;
-            int currentWeek = (int)MathF.Ceiling((DateTime.Now.Day + firstDayOffset - 1) / 7f) - 1;
+            DateTime _firstDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            int _firstDayOffset = (int)_firstDate.DayOfWeek;
+            if (_firstDate.DayOfWeek == DayOfWeek.Sunday) _firstDayOffset = 7;
+            int _currentWeek = (int)MathF.Ceiling((DateTime.Now.Day + _firstDayOffset - 1) / 7f) - 1;
 
             // Calculate total calories burnt during the month
             float _totalCaloriesBurnt = 0f;
@@ -83,16 +83,16 @@ namespace MVC.App.UI.SecondaryMenu.Stats
             // Display the stats with the right ratio between them
             CalorieStat _stat;
             float _ratio;
-            bool isCurrentWeek;
+            bool _isCurrentWeek;
 
             for (int i = 0; i < _weeksNum; i++)
             {
-                if (i == currentWeek) isCurrentWeek = true;
-                else isCurrentWeek = false;
+                if (i == _currentWeek) _isCurrentWeek = true;
+                else _isCurrentWeek = false;
 
                 _ratio = caloriesBurntPerWeek[i] / _totalCaloriesBurnt;
                 _stat = monthCaloriesContainer.GetChild(i).GetComponent<CalorieStat>();
-                _stat.SetValue(_ratio, isCurrentWeek);
+                _stat.SetValue(_ratio, _isCurrentWeek);
             }
         }
 
