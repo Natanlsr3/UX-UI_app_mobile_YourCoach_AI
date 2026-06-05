@@ -123,7 +123,7 @@ namespace MVC.App.UI.MainMenu
             message.GetComponentInChildren<TMP_Text>().text = _messageText;
 
             userMessageField.text = "";
-            userMessagePlaceholder.text = defaultMessageText;
+            //userMessagePlaceholder.text = defaultMessageText;
 
             FillMessage(coachMessageContainer, _messageText);
 

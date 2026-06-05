@@ -43,6 +43,7 @@ namespace MVC.App
         void Start()
         {
             DontDestroyOnLoad(gameObject);
+            LoadLanguage();
         }
 
         public void LoadLanguage()
