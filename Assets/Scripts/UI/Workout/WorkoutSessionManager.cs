@@ -465,7 +465,7 @@ namespace MVC.App.UI.Workout
             }
             else
             {
-                SoundManager.instance.PlayClip();
+                SoundManager.instance.UnPauseClip();
                 pauseButton.image.sprite = pauseImage;
             }
             

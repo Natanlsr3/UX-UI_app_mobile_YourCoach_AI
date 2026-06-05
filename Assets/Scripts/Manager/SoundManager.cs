@@ -65,6 +65,11 @@ public class SoundManager : MonoBehaviour
         soundSource.Pause();
     }
 
+    public void UnPauseClip()
+    {
+        soundSource.UnPause();
+    }
+
     public void StopClip()
     { 
         soundSource.Stop();
