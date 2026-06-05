@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: ProfileUI Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: ProfileUI
+  m_TableCollectionNameGuidString: bad067fc434f682409dcd08eb978a17b
+  m_Entries:
+  - m_Id: 10766368768
+    m_Key: profile_title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28492955238400
+    m_Key: profile_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28674665070592
+    m_Key: profile_surname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28987383988224
+    m_Key: profile_password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29129449259008
+    m_Key: profile_change
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29449474654208
+    m_Key: profile_goal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29621579530240
+    m_Key: profile_age
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29698175909888
+    m_Key: profile_weight
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8861874704408903682
+  references:
+    version: 2
+    RefIds:
+    - rid: 8861874704408903682
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1780569856364

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: ProfileUI_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: bad067fc434f682409dcd08eb978a17b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 10766368768
+    m_Localized: Profil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28492955238400
+    m_Localized: "Pr\xE9nom"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28674665070592
+    m_Localized: Nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28987383988224
+    m_Localized: Mot de passe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29129449259008
+    m_Localized: Changer de Mot de passe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29449474654208
+    m_Localized: Votre objectif fitness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29621579530240
+    m_Localized: Age
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29698175909888
+    m_Localized: Poids (kg)
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

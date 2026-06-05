@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LoginUI_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 21a6a6247fc187d4598922b07ede0d5f, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 302111113216
+    m_Localized: "Cr\xE9er un compte"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1252150329344
+    m_Localized: Commencez un nouveau parcours fitness !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2162704367616
+    m_Localized: Nom d'Utilisateur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2189141065728
+    m_Localized: Nouveau Mot de passe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3130737147904
+    m_Localized: S'inscrire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10866694668288
+    m_Localized: "Ce nom d'utilisateur existe d\xE9j\xE0. Veuillez r\xE9essayer\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11474830999552
+    m_Localized: Mot de passe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11557521702912
+    m_Localized: Bienvenue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11859276709888
+    m_Localized: Se connecter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12073215574016
+    m_Localized: Veuillez saisir vos identifiants de connexion ci-dessous.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12261065867264
+    m_Localized: "Mot de passe oubli\xE9 ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13540114677760
+    m_Localized: "Nom d'utilisateur ou mot de passe incorrect. Veuillez r\xE9essayer\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13742594703360
+    m_Localized: Vous n'avez pas de compte ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14182719799296
+    m_Localized: "Cr\xE9er un Compte"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

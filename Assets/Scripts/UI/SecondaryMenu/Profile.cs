@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using MVC.App.UI.RegisterMenu.RegisterPopUp;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MVC.App.UI.SecondaryMenu
 {
     public class Profile : SecondaryMenu
     {
+        [SerializeField] private Button settingsButton;
+
         [SerializeField] private GameObject forgetPasswordScreen;
         [SerializeField] private Button forgetPasswordButton;
 
@@ -33,6 +36,7 @@ namespace MVC.App.UI.SecondaryMenu
             base.Start();
 
             anim = GetComponent<Animator>();
+            settingsButton.onClick.AddListener(GoToSettings);
             forgetPasswordButton.onClick.AddListener(SetForgetPasswordWindow);
 
             firstNameDisplay.text = LogSession.Instance.CurrentUser.FirstName;
@@ -54,6 +58,11 @@ namespace MVC.App.UI.SecondaryMenu
             weightField.text = LogSession.Instance.CurrentUser.Weight.ToString();
 
             goal.value = (int)LogSession.Instance.CurrentUser.Goal;
+        }
+
+        private void GoToSettings()
+        {
+            SceneManager.LoadScene("Settings");
         }
 
         private void SetForgetPasswordWindow()
