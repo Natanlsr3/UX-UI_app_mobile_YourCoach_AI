@@ -29,8 +29,7 @@ namespace MVC.App.UI.SecondaryMenu.Stats
 
         private void SetDayCalories()
         {
-            todayCalories.SetValue(0.5f, true);
-            todayCalories.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = caloriesBurntToday + " kcal";
+            todayCalories.SetValue(caloriesBurntToday, 0.5f, true);
         }
 
         private void SetWeekCalories()
@@ -60,7 +59,7 @@ namespace MVC.App.UI.SecondaryMenu.Stats
 
                 _ratio = caloriesBurntPerDay[i] / _totalCaloriesBurnt;
                 _stat = weekCaloriesContainer.GetChild(i).GetComponent<CalorieStat>();
-                _stat.SetValue(_ratio, _isCurrentDay);
+                _stat.SetValue(caloriesBurntPerDay[i], _ratio, _isCurrentDay);
             }
         }
 
@@ -92,7 +91,7 @@ namespace MVC.App.UI.SecondaryMenu.Stats
 
                 _ratio = caloriesBurntPerWeek[i] / _totalCaloriesBurnt;
                 _stat = monthCaloriesContainer.GetChild(i).GetComponent<CalorieStat>();
-                _stat.SetValue(_ratio, _isCurrentWeek);
+                _stat.SetValue(caloriesBurntPerWeek[i], _ratio, _isCurrentWeek);
             }
         }
 

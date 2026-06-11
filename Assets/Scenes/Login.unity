@@ -505,7 +505,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Volume: 1
   IsMute: 0
-  CurrentLanguage: 1
+  CurrentLanguage: 2
+  LanguageCodes:
+  - fr
+  - en
+  - es
   TimeZoneIndex: 0
   IsAutoDetect: 0
   NotificationFromIndex: 0

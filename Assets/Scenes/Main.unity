@@ -604,10 +604,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3002204220032489737, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3627516823feabf43a0a54643c3062ad, type: 3}
     - target: {fileID: 3947660833907072015, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_Name
       value: ConversationMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6666115543962761704, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f803dffaa1e21e49a3fd9c1d2b2ba4b, type: 3}
+    - target: {fileID: 6687766828565016095, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5817dbab4c36b3f4faabc05512ae017c, type: 3}
     - target: {fileID: 7509606364839720190, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0

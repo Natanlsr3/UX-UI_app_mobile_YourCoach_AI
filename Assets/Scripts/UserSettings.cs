@@ -13,7 +13,7 @@ namespace MVC.App
         [HideInInspector] public bool IsMute;
 
         public enum Language { French, English, Spanish }
-        [HideInInspector] public Language CurrentLanguage = Language.English;
+        public Language CurrentLanguage = Language.English;
         [HideInInspector] public List<string> LanguageCodes = new List<string>() { "fr", "en", "es" };
 
         [HideInInspector] public int TimeZoneIndex;

@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 63010619392
-    m_Localized: "Posez une question \xE0 l'entra\xEEneur Mike !"
+    m_Localized: "Posez une question \xE0 Mike !"
     m_Metadata:
       m_Items: []
   references:
