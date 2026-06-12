@@ -36,6 +36,8 @@ namespace MVC.App.UI.SecondaryMenu.Stats
         {
             // Get current day of the week
             int _currentDay = 0;
+
+            //Correct the day offset
             if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday) _currentDay = 6;
             else _currentDay = (int)DateTime.Today.DayOfWeek - 1;
 

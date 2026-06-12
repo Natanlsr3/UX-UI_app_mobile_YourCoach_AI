@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MVC.App.UI.SecondaryMenu
+namespace MVC.App.UI.SecondaryMenu.Profile
 {
     public class Profile : SecondaryMenu
     {
