@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using MVC.App.UI.Workout;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace MVC.App.UI.SecondaryMenu.Training
 {
@@ -17,9 +19,16 @@ namespace MVC.App.UI.SecondaryMenu.Training
         [SerializeField] private TextMeshProUGUI caloriesDisplay;
         [SerializeField] private TextMeshProUGUI musclesDisplay;
 
+        [SerializeField] private Button detailButton;
+        [SerializeField] private GameObject workoutPreviewPrefab;
+        private WorkoutPreview workoutPreview;
+
+        private bool isPreviewDisplayed;
+
         protected override void Start()
         {
             base.Start();
+            detailButton.onClick.AddListener(DisplayExercises);
             sessionDisplay.SetActive(false);
             DayDisplay.OnDayClick += UpdateDisplay;
         }
@@ -45,6 +54,21 @@ namespace MVC.App.UI.SecondaryMenu.Training
                 musclesDisplay.text = _session.MusclesWorked;
             }
             else sessionDisplay.SetActive(false);
+        }
+
+        private void DisplayExercises()
+        {
+            if (isPreviewDisplayed)
+            {
+                workoutPreview.Leave();
+            }
+            else
+            {
+                LogSession.WorkoutSession _session = LogSession.Instance.GetSessionAtDate(Calendar.Instance.SelectedDate);
+                workoutPreview = Instantiate(workoutPreviewPrefab, transform).GetComponent<WorkoutPreview>();
+                workoutPreview.SetPreview(_session.WorkoutName, _session.WorkoutExercises);
+            }
+            isPreviewDisplayed = !isPreviewDisplayed;
         }
     }
 }
