@@ -22,12 +22,12 @@ namespace MVC.App.UI.SecondaryMenu.Training
             /// <summary>
             /// Constructor of Day
             /// </summary>
-            public Day(int _dayNum, DayState _dayState, DayDisplay _display)
+            public Day(DateTime _date, DayState _dayState, DayDisplay _display)
             {
-                DayNum = _dayNum;
+                DayNum = _date.Day;
                 Display = _display;
                 UpdateState(_dayState);
-                UpdateDay(_dayNum);
+                UpdateDay(_date);
             }
 
             /// <summary>
@@ -43,17 +43,18 @@ namespace MVC.App.UI.SecondaryMenu.Training
             /// When updating the day we decide whether we should show the dayNum based on the color of the day
             /// This means the color should always be updated before the day is updated
             /// </summary>
-            public void UpdateDay(int _newDayNum)
+            public void UpdateDay(DateTime _date)
             {
-                DayNum = _newDayNum;
+                DayNum = _date.Day;
                 if (State == DayState.InMonth || State == DayState.Current)
                 {
-                    Display.DayText.text = (DayNum + 1).ToString();
+                    Display.DayText.text = DayNum.ToString();
                 }
                 else
                 {
                     Display.DayText.text = "";
                 }
+                Display.SetDate(_date);
             }
         }
 
@@ -65,19 +66,21 @@ namespace MVC.App.UI.SecondaryMenu.Training
         /// <summary>
         /// Setup in editor since there will always be six weeks. 
         /// </summary>
-        public Transform[] weeks;
+        [SerializeField] private Transform[] weeks;
 
         /// <summary>
         /// This is the text object that displays the current month and year
         /// </summary>
-        public TextMeshProUGUI MonthAndYear;
+        [SerializeField] private TextMeshProUGUI MonthAndYear;
 
         /// <summary>
         /// this currentDate is the date our Calendar is currently on. The year and month are based on the calendar, 
         /// while the day itself is almost always just 1
         /// If you have some option to select a day in the calendar, you would want the change this objects day value to the last selected day
         /// </summary>
-        public DateTime currentDate = DateTime.Now;
+        private DateTime currentDate = DateTime.Now;
+
+        public DateTime SelectedDate;
 
         private const int WEEK_NUM = 5;
         private const int DAY_NUM = 7;
@@ -121,7 +124,6 @@ namespace MVC.App.UI.SecondaryMenu.Training
             int _startDay = GetMonthStartDay(_year, _month);
             int _endDay = GetTotalNumberOfDays(_year, _month);
 
-
             //Create the days
             //This only happens for our first Update Calendar when we have no Day objects therefore we must create them
 
@@ -135,11 +137,11 @@ namespace MVC.App.UI.SecondaryMenu.Training
                         int _currentDay = (i * 7) + j;
                         if (_currentDay < _startDay || _currentDay - _startDay >= _endDay)
                         {
-                            _newDay = new Day(_currentDay - _startDay, Day.DayState.OutMonth, weeks[i].GetChild(j).GetComponent<DayDisplay>());
+                            _newDay = new Day(new DateTime(_date.Year, _date.Month, Mathf.Clamp(_currentDay - _startDay + 1, 1, _endDay)), Day.DayState.OutMonth, weeks[i].GetChild(j).GetComponent<DayDisplay>());
                         }
                         else
                         {
-                            _newDay = new Day(_currentDay - _startDay, Day.DayState.InMonth, weeks[i].GetChild(j).GetComponent<DayDisplay>());
+                            _newDay = new Day(new DateTime(_date.Year, _date.Month, Mathf.Clamp(_currentDay - _startDay + 1, 1, _endDay)), Day.DayState.InMonth, weeks[i].GetChild(j).GetComponent<DayDisplay>());
                         }
                         days.Add(_newDay);
                     }
@@ -160,7 +162,7 @@ namespace MVC.App.UI.SecondaryMenu.Training
                         days[i].UpdateState(Day.DayState.InMonth);
                     }
 
-                    days[i].UpdateDay(i - _startDay);
+                    days[i].UpdateDay(new DateTime(_date.Year, _date.Month, Mathf.Clamp(i - _startDay + 1, 1, _endDay)));
                 }
             }
 
@@ -182,6 +184,7 @@ namespace MVC.App.UI.SecondaryMenu.Training
             //Correct the day offset 
             int _dayOfWeek = (int)_date.DayOfWeek;
             if (_dayOfWeek == DAY_NUM - 1) _dayOfWeek = 0;
+            else if (_dayOfWeek == 0) _dayOfWeek = DAY_NUM - 1;
             else _dayOfWeek -= 1;
 
             //DayOfWeek : Monday == 0, Sunday == 6 etc

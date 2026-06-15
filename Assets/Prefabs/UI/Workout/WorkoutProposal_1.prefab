@@ -593,14 +593,14 @@ MonoBehaviour:
   m_NameDisplay: {fileID: 1931889154899149316}
   m_ExerciseContainer: {fileID: 8310137042393708924}
   m_ExerciseDisplayPrefab: {fileID: 3306305346889929870, guid: e97a318d8317405469242260930abea5, type: 3}
-  m_Exercies:
+  m_Exercises:
   - Name: Running
     ExercisePreview: {fileID: 21300000, guid: fa0eea44b81df174581e2985b8c8217d, type: 3}
     Duration: 600
     Level: Beginner
     SetNumber: 1
     RepNumber: 1
-    Muscle: Leggs
+    Muscle: Legs
     RecoveryTime: 60
     Video: {fileID: 32900000, guid: 7c120c8745a09ca40a7e6b1ecf938117, type: 3}
   - Name: Unilateral Lunge
@@ -612,7 +612,7 @@ MonoBehaviour:
     Muscle: Quadriceps
     RecoveryTime: 30
     Video: {fileID: 32900000, guid: 79940810562bc4d40a120f3c3a1eccde, type: 3}
-  - Name: Squat
+  - Name: Squats
     ExercisePreview: {fileID: 21300000, guid: b43b3a5224806d14fab0b1d868822734, type: 3}
     Duration: 40
     Level: Beginner
@@ -652,6 +652,10 @@ MonoBehaviour:
   noButton: {fileID: 892494491396727706}
   startButtonPrefab: {fileID: 2757716994847531246, guid: b6bc2f8eda098194aab2290ba05b8981, type: 3}
   Conversation: {fileID: 0}
+  workoutType: Full Body
+  duration: 60
+  calories: 500
+  muscles: Quadriceps, Legs, Back
 --- !u!1 &9182267460300268873
 GameObject:
   m_ObjectHideFlags: 0

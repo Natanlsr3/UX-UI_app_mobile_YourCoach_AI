@@ -14,7 +14,7 @@ namespace MVC.App.UI.Workout
         [SerializeField] protected Transform m_ExerciseContainer;
         [SerializeField] protected GameObject m_ExerciseDisplayPrefab;
 
-        [SerializeField] protected List<Exercise> m_Exercies;
+        [SerializeField] protected List<Exercise> m_Exercises;
         [SerializeField] protected List<Exercise> m_OptExercises;
 
         protected virtual void Start()
@@ -26,14 +26,14 @@ namespace MVC.App.UI.Workout
             m_WorkoutName = _name;
             m_NameDisplay.text = m_WorkoutName;
 
-            m_Exercies = _exercises;
+            m_Exercises = _exercises;
 
             m_NameDisplay.text = m_WorkoutName;
 
-            int _exerciseNum = m_Exercies.Count;
+            int _exerciseNum = m_Exercises.Count;
             for (int i = 0; i < _exerciseNum; i++)
             {
-                Exercise _exercise = m_Exercies[i];
+                Exercise _exercise = m_Exercises[i];
                 ExerciseDisplay _exerciseDisplay = Instantiate(m_ExerciseDisplayPrefab, m_ExerciseContainer).GetComponent<ExerciseDisplay>();
                 _exerciseDisplay.SetExercise(_exercise.Name, _exercise.ExercisePreview, _exercise.Duration, _exercise.Level, _exercise.SetNumber, _exercise.RepNumber, _exercise.Muscle, _exercise.RecoveryTime);
             }

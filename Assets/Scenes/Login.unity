@@ -505,7 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Volume: 1
   IsMute: 0
-  CurrentLanguage: 2
+  CurrentLanguage: 1
   LanguageCodes:
   - fr
   - en
@@ -716,6 +716,7 @@ MonoBehaviour:
   WorkoutExercises: []
   OptExercises: []
   WorkoutName: 
+  WorkoutSessions: []
 --- !u!4 &1968219722
 Transform:
   m_ObjectHideFlags: 0
