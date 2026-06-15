@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MVC.App.UI.MainMenu;
@@ -18,24 +19,42 @@ namespace MVC.App.UI.Workout
 
         [HideInInspector] public Conversation Conversation;
 
+        [Header("Additional Infos")]
+        [SerializeField] private string workoutType;
+        [SerializeField] private float duration;
+        [SerializeField] private float calories;
+        [SerializeField] private string muscles;
+
         protected override void Start()
         {
             base.Start();
 
-            SetPreview(m_WorkoutName, m_Exercies);
+            SetPreview(m_WorkoutName, m_Exercises);
 
             noButton.onClick.AddListener(RefuseProposal);
 
             Button _startButton = Instantiate(startButtonPrefab, m_ExerciseContainer).GetComponent<Button>();
             _startButton.onClick.AddListener(StartWorkout);
 
-            LogSession.Instance.WorkoutExercises = m_Exercies;
+            LogSession.Instance.WorkoutExercises = m_Exercises;
             LogSession.Instance.OptExercises = m_OptExercises;
             LogSession.Instance.WorkoutName = m_WorkoutName;
         }
 
         private void StartWorkout()
         {
+            LogSession.WorkoutSession _session = new LogSession.WorkoutSession()
+            {
+                WorkoutExercises = m_Exercises,
+                OptExercises = m_OptExercises,
+                WorkoutName = m_WorkoutName,
+                WorkoutType = workoutType,
+                Duration = duration,
+                Date = DateTime.Today,
+                CaloriesBurnt = calories,
+                MusclesWorked = muscles
+            };
+            LogSession.Instance.WorkoutSessions.Add(_session);
             SceneManager.LoadScene("Workout");
         }
 

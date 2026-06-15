@@ -42,6 +42,20 @@ namespace MVC.App
         [HideInInspector] public List<Exercise> OptExercises = new List<Exercise>();
         [HideInInspector] public string WorkoutName;
 
+        [Serializable]
+        public struct WorkoutSession
+        {
+            public List<Exercise> WorkoutExercises;
+            public List<Exercise> OptExercises;
+            public string WorkoutName;
+            public string WorkoutType;
+            public float Duration;
+            public DateTime Date;
+            public float CaloriesBurnt;
+            public string MusclesWorked;
+        }
+
+        public List<WorkoutSession> WorkoutSessions;
 
         private static LogSession instance;
         public static LogSession Instance { get => instance; }
@@ -136,6 +150,39 @@ namespace MVC.App
             }
 
             return -1;
+        }
+
+        /// <summary>
+        /// Check if there is an existing workout session at the given date
+        /// </summary>
+        /// <param name="_date"></param>
+        /// <returns></returns>
+        public bool CheckWorkoutDate(DateTime _date)
+        {
+            int _sessionNum = WorkoutSessions.Count;
+            for (int i = 0; i < _sessionNum; i++)
+            {
+                if (WorkoutSessions[i].Date == _date) return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Get the workout session at the given date
+        /// </summary>
+        /// <param name="_date"></param>
+        /// <returns></returns>
+        public WorkoutSession GetSessionAtDate(DateTime _date)
+        {
+            int _sessionNum = WorkoutSessions.Count;
+            for (int i = 0; i < _sessionNum; i++)
+            {
+                if (WorkoutSessions[i].Date == _date) return WorkoutSessions[i];
+            }
+
+            // if no session found, return a default workout session
+            return new WorkoutSession();
         }
 
         void OnDestroy()

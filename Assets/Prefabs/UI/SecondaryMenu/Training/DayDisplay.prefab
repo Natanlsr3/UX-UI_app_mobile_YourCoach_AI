@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf849bca14cd19b42aab9cd135383024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Frame: {fileID: 205498413373037504}
-  Indicator: {fileID: 4871640668746152972}
+  frame: {fileID: 205498413373037504}
+  indicator: {fileID: 4871640668746152972}
   buttonFrame: {fileID: 1131272068306852675}
   DayText: {fileID: 4024689961943581257}
 --- !u!1 &1381818930255902806
