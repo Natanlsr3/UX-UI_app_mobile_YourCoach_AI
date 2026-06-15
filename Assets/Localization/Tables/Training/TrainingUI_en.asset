@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: Muscles worked
     m_Metadata:
       m_Items: []
+  - m_Id: 17856519917568
+    m_Localized: Details
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

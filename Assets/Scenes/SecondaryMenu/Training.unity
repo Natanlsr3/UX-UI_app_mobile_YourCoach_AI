@@ -1623,8 +1623,67 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6607551423757363135, guid: 0a134e14b61c37848bef2d54a38c4c57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4187785094616226652}
   m_SourcePrefab: {fileID: 100100000, guid: 0a134e14b61c37848bef2d54a38c4c57, type: 3}
+--- !u!1 &4187785094616226650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6607551423757363135, guid: 0a134e14b61c37848bef2d54a38c4c57, type: 3}
+  m_PrefabInstance: {fileID: 4187785094616226649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4187785094616226651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4250354784185488590, guid: 0a134e14b61c37848bef2d54a38c4c57, type: 3}
+  m_PrefabInstance: {fileID: 4187785094616226649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187785094616226650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4187785094616226652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187785094616226650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:d6ecc5ee8c88ca040bc9a08521284e28
+    m_TableEntryReference:
+      m_KeyId: 17856519917568
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4187785094616226651}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

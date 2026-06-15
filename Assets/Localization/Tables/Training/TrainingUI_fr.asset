@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: "Muscles travaill\xE9s"
     m_Metadata:
       m_Items: []
+  - m_Id: 17856519917568
+    m_Localized: "D\xE9tails"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

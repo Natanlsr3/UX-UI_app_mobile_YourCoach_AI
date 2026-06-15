@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: training_muscles
     m_Metadata:
       m_Items: []
+  - m_Id: 17856519917568
+    m_Key: training_details
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
