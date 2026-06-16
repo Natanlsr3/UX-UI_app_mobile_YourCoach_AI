@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MVC.App.UI.SecondaryMenu.Challenge
@@ -12,6 +10,7 @@ namespace MVC.App.UI.SecondaryMenu.Challenge
         {
             base.Start();
 
+            // Create and display the current tracked challenge with their information and state
             int _challengeNum = ChallengeTracker.Instance.Challenges.Count;
             for (int i = 0; i < _challengeNum; i++)
             {

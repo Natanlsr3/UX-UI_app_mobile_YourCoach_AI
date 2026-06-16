@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,13 +14,17 @@ namespace MVC.App.UI.Workout
         [SerializeField] private Image workoutProgress;
         [SerializeField] private TextMeshProUGUI progressPercent;
 
+        // The list that contain the total duration of the different types of exercise, including recovery times
         private List<float> exercisesDuration = new List<float>();
+
         private float totalTime;
         private float time;
 
         private float progressMaxLength;
 
         [HideInInspector] public bool IsPaused;
+
+        #region Singleton
 
         private static WorkoutProgress instance;
         public static WorkoutProgress Instance { get => instance; }
@@ -37,23 +40,30 @@ namespace MVC.App.UI.Workout
             instance = this;
         }
 
+        #endregion
+
         void Start()
         {
             SetWorkoutProgress();
         }
 
+        /// <summary>
+        /// Initialize the workout progress bar with the different separations between exercises
+        /// </summary>
         private void SetWorkoutProgress()
         {
             // Set the total duration of the workout
 
-            float _exerciseTotalDuration = 0f;
+            float _exerciseTotalDuration;
             totalTime = 0f;
 
             int _exerciseNum = LogSession.Instance.WorkoutExercises.Count;
             for (int i = 0; i < _exerciseNum; i++)
             {
+                // Calculate the total duration with the number of exercise, the number of recovery and their duration
                 _exerciseTotalDuration = LogSession.Instance.WorkoutExercises[i].Duration * LogSession.Instance.WorkoutExercises[i].SetNumber
                                          + LogSession.Instance.WorkoutExercises[i].RecoveryTime * LogSession.Instance.WorkoutExercises[i].SetNumber;
+
                 exercisesDuration.Add(_exerciseTotalDuration);
                 totalTime += _exerciseTotalDuration;
             }
@@ -68,23 +78,32 @@ namespace MVC.App.UI.Workout
             int _separationNum = _exerciseNum - 1;
             for (int i = 0; i < _separationNum; i++)
             {
+                // Get the position of the previous separation, if there is no previous separation get the start position instead
                 Vector3 _previousSeparationPos = (i > 0) ? _separationList[i - 1].localPosition : _progressStartPos;
 
+                // Calculate the separation position
                 float _durationRatio = exercisesDuration[i] / totalTime;
                 Vector3 _position = _previousSeparationPos + Vector3.right * progressMaxLength * _durationRatio;
 
+                // Create and place the separation
                 GameObject _separation = Instantiate(exerciseSeparation, separationContainer);
                 _separation.transform.localPosition = _position;
-
                 _separationList.Add(_separation.transform);
             }
         }
 
+        /// <summary>
+        /// Start the tracking of the workout progress
+        /// </summary>
         public void StartProgress()
         {
             StartCoroutine(ProgressCoroutine());
         }
 
+        /// <summary>
+        /// Progress through the workout and update the progress bar
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator ProgressCoroutine()
         {
             while (time < totalTime)
@@ -103,6 +122,10 @@ namespace MVC.App.UI.Workout
             }
         }
 
+        /// <summary>
+        /// Add time to the current workout progress
+        /// </summary>
+        /// <param name="_time"></param>
         public void AddTime(float _time){ time += _time; }
 
         private void OnDestroy()

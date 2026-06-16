@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MVC.App.UI.RegisterMenu
@@ -27,6 +24,7 @@ namespace MVC.App.UI.RegisterMenu
 
         protected Animator m_Anim;
 
+        // Default text of username and password text field
         protected string m_DefaultUsernameText;
         protected string m_DefaultPasswordText;
 
@@ -56,25 +54,37 @@ namespace MVC.App.UI.RegisterMenu
             DisplayError(false);
         }
 
-        // Bound to Username Input Field
+        /// <summary>
+        /// Update username with given username.
+        /// Bound to username input field
+        /// </summary>
+        /// <param name="_username"></param>
         protected void UpdateUsername(string _username)
         {
             m_TypedUsername = _username;
         }
 
-        // Bound to Password Input Field
+        /// <summary>
+        /// Update password with given password.
+        /// Bound to password input field
+        /// </summary>
+        /// <param name="_password"></param>
         protected void UpdatePassword(string _password)
         {
             m_TypedPassword = _password;
         }
 
-        // Bound to Password Display Button
+        /// <summary>
+        /// Switch the password display (displayed or hidden).
+        /// Bound to password display button
+        /// </summary>
         public virtual void SetPasswordDisplay()
         {
             m_IsPasswordHidden = !m_IsPasswordHidden;
 
             if (m_IsPasswordHidden)
             {
+                // Change input field type to password and update it
                 m_PasswordField.contentType = TMP_InputField.ContentType.Password;
                 m_PasswordField.ForceLabelUpdate();
 
@@ -82,6 +92,7 @@ namespace MVC.App.UI.RegisterMenu
             }
             else
             {
+                // Change input field type to standard and update it
                 m_PasswordField.contentType = TMP_InputField.ContentType.Standard;
                 m_PasswordField.ForceLabelUpdate();
 
@@ -89,11 +100,18 @@ namespace MVC.App.UI.RegisterMenu
             }
         }
 
+        /// <summary>
+        /// Display or hide error panel
+        /// </summary>
+        /// <param name="_isVisible"></param>
         protected virtual void DisplayError(bool _isVisible)
         {
             if (m_ErrorPanel.activeInHierarchy != _isVisible) m_ErrorPanel.SetActive(_isVisible);
         }
 
+        /// <summary>
+        /// Set username and password text field to default value
+        /// </summary>
         protected void ResetTextField()
         {
             // Reset content

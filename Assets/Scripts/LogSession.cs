@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using MVC.App.UI.Workout;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace MVC.App
 {
@@ -54,8 +52,9 @@ namespace MVC.App
             public float CaloriesBurnt;
             public string MusclesWorked;
         }
-
         public List<WorkoutSession> WorkoutSessions;
+
+        #region Singleton
 
         private static LogSession instance;
         public static LogSession Instance { get => instance; }
@@ -71,11 +70,19 @@ namespace MVC.App
             instance = this;
         }
 
+        #endregion
+
         void Start()
         {
             DontDestroyOnLoad(gameObject);
         }
 
+        /// <summary>
+        /// Check if there is an existing user with the given name and password
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <param name="_password"></param>
+        /// <returns></returns>
         public bool ValidUser(string _name, string _password)
         {
             int _userNum = UserList.Count;
@@ -92,6 +99,11 @@ namespace MVC.App
             return false;
         }
 
+        /// <summary>
+        /// Check if there is an existing user with the given name
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <returns></returns>
         public bool ExistingUser(string _name)
         {
             int _userNum = UserList.Count;
@@ -107,11 +119,20 @@ namespace MVC.App
             return false;
         }
 
+        /// <summary>
+        /// Set the current user with the given user
+        /// </summary>
+        /// <param name="_user"></param>
         public void SetUser(User _user)
         {
             UserList[userIndex] = _user;
         }
 
+        /// <summary>
+        /// Create a user and add it to the user list with the given name and password
+        /// </summary>
+        /// <param name="_username"></param>
+        /// <param name="_password"></param>
         public void CreateUser(string _username, string _password)
         {
             User _newUser = new User();
@@ -122,6 +143,11 @@ namespace MVC.App
             UserList.Add(_newUser);
         }
 
+        /// <summary>
+        /// Search and return a user in the user list by the given name
+        /// </summary>
+        /// <param name="_username"></param>
+        /// <returns></returns>
         public User FindUser(string _username)
         {
             int _userNum = UserList.Count;
@@ -134,9 +160,15 @@ namespace MVC.App
                 }
             }
 
+            // Return a default user value if no user found
             return new User();
         }
 
+        /// <summary>
+        /// Search a user in the user list by the given name, and return its index in list
+        /// </summary>
+        /// <param name="_username"></param>
+        /// <returns></returns>
         public int FindUserIndex(string _username)
         {
             int _userNum = UserList.Count;
@@ -149,6 +181,7 @@ namespace MVC.App
                 }
             }
 
+            // Return a default index value if no user found
             return -1;
         }
 

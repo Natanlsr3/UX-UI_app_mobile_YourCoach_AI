@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MVC.App.UI.RegisterMenu.RegisterPopUp
@@ -20,12 +17,20 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
         protected override void Start()
         {
             base.Start();
+
+            // Connect buttons
             m_ConfirmButton.onClick.AddListener(Confirm);
             m_LeavePopUpButton.onClick.AddListener(LeavePopUp);
         }
 
+        /// <summary>
+        /// Validate the registered information
+        /// </summary>
         protected virtual void Confirm() { }
 
+        /// <summary>
+        /// Quit the pop-up window and play leave animation
+        /// </summary>
         protected virtual void LeavePopUp()
         {
             DisplayError(false);
@@ -33,6 +38,9 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
             OnLeftPopUp?.Invoke();
         }
 
+        /// <summary>
+        /// Destroy the pop-up window
+        /// </summary>
         public void DestroyWindow() { Destroy(gameObject); }
     }
 }

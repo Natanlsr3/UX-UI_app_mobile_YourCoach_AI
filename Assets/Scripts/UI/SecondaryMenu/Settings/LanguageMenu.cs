@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
 
 namespace MVC.App.UI.SecondaryMenu.Settings
 {
@@ -15,6 +12,7 @@ namespace MVC.App.UI.SecondaryMenu.Settings
 
         void Start()
         {
+            // Assign to each button the changement of their corresponding language
             int _buttonNum = buttonContainer.childCount;
             for (int i = 0; i < _buttonNum; i++)
             {
@@ -26,9 +24,14 @@ namespace MVC.App.UI.SecondaryMenu.Settings
 
             buttonNum = buttonList.Count;
 
+            // Change the language with the default language
             SetLanguage((int)UserSettings.Instance.CurrentLanguage);
         }
 
+        /// <summary>
+        /// Change the language used in the application using a language index
+        /// </summary>
+        /// <param name="_index"></param> The index of the selected language in the Language enum of the UserSettings
         private void SetLanguage(int _index)
         {
             // Update button display
@@ -38,6 +41,7 @@ namespace MVC.App.UI.SecondaryMenu.Settings
             }
             buttonList[_index].SetState(true);
 
+            // Set and load new language
             UserSettings.Instance.CurrentLanguage = (UserSettings.Language)_index;
             UserSettings.Instance.LoadLanguage();
         }

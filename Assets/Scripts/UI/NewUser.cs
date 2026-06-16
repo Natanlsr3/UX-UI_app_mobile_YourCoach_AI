@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Button = UnityEngine.UI.Button;
 
 namespace MVC.App.UI
@@ -61,12 +59,17 @@ namespace MVC.App.UI
             age.AddOptions(_ageList);
         }
 
+        /// <summary>
+        /// Scroll the menu to previous or next step
+        /// </summary>
+        /// <param name="_isForward"></param>
         private void MoveToNextStep(bool _isForward = true)
         {
             if (_isForward)
             {
                 if (step == 0)
                 {
+                    // Check if fields are filled
                     if (firstNameField.text != "" & lastNameField.text != "" & weightField.text != "")
                     {
                         errorPanel.SetActive(false);
@@ -90,12 +93,13 @@ namespace MVC.App.UI
             }
         }
 
+        /// <summary>
+        /// Set the current user and send him to the main menu
+        /// </summary>
         private void ConnectToMainMenu()
         {
             // Set new user
-
             LogSession.User _user = LogSession.Instance.CurrentUser;
-
             _user.FirstName = firstNameField.text;
             _user.LastName = lastNameField.text;
             _user.Age = age.value;

@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
-using UnityEngine.UI;
 
 namespace MVC.App.UI.SecondaryMenu.Training
 {
@@ -31,7 +29,7 @@ namespace MVC.App.UI.SecondaryMenu.Training
             }
 
             /// <summary>
-            /// Call this when updating the state so that both the state is updated, as well as the visual display on the screen
+            /// Update the state of the day cell and update its display
             /// </summary>
             public void UpdateState(DayState _newState)
             {
@@ -40,8 +38,8 @@ namespace MVC.App.UI.SecondaryMenu.Training
             }
 
             /// <summary>
-            /// When updating the day we decide whether we should show the dayNum based on the color of the day
-            /// This means the color should always be updated before the day is updated
+            /// Update day number displayed based on day state.
+            /// Should be called after UpdateState() method
             /// </summary>
             public void UpdateDay(DateTime _date)
             {
@@ -58,28 +56,19 @@ namespace MVC.App.UI.SecondaryMenu.Training
             }
         }
 
-        /// <summary>
-        /// All the days in the month. After we make our first calendar we store these days in this list so we do not have to recreate them every time.
-        /// </summary>
+        // All the days in the month
         private List<Day> days = new List<Day>();
 
-        /// <summary>
-        /// Setup in editor since there will always be six weeks. 
-        /// </summary>
+        // All the weeks in the month (already setup in editor)
         [SerializeField] private Transform[] weeks;
 
-        /// <summary>
-        /// This is the text object that displays the current month and year
-        /// </summary>
         [SerializeField] private TextMeshProUGUI MonthAndYear;
 
-        /// <summary>
-        /// this currentDate is the date our Calendar is currently on. The year and month are based on the calendar, 
-        /// while the day itself is almost always just 1
-        /// If you have some option to select a day in the calendar, you would want the change this objects day value to the last selected day
-        /// </summary>
+        // Date the calendar is currently on.
+        // The year and month are based on the calendar, while the day itself is almost always just 1 (because not needed)
         private DateTime currentDate = DateTime.Now;
 
+        // Date selected by the user when clicking on a day button
         public DateTime SelectedDate;
 
         private const int WEEK_NUM = 5;
@@ -105,16 +94,52 @@ namespace MVC.App.UI.SecondaryMenu.Training
 
         #endregion
 
-        /// <summary>
-        /// In start we set the Calendar to the current date
-        /// </summary>
         private void Start()
         {
-            UpdateCalendar(DateTime.Now.Year, DateTime.Now.Month);
+            // Set calendar to current date
+            InitCalendar(DateTime.Now.Year, DateTime.Now.Month);
         }
 
         /// <summary>
-        /// Anytime the Calendar is changed we call this to make sure we have the right days for the right month/year
+        /// Create all days and fill the calendar with them
+        /// </summary>
+        /// <param name="_year"></param>
+        /// <param name="_month"></param>
+        private void InitCalendar(int _year, int _month)
+        {
+            DateTime _date = new DateTime(_year, _month, 1);
+            currentDate = _date;
+            MonthAndYear.text = _date.ToString("MMMM") + " " + _date.Year;
+            int _startDay = GetMonthStartDay(_year, _month);
+            int _endDay = GetTotalNumberOfDays(_year, _month);
+
+            for (int i = 0; i < WEEK_NUM; i++)
+            {
+                for (int j = 0; j < DAY_NUM; j++)
+                {
+                    Day _newDay;
+                    int _currentDay = (i * 7) + j;
+                    if (_currentDay < _startDay || _currentDay - _startDay >= _endDay)
+                    {
+                        _newDay = new Day(new DateTime(_date.Year, _date.Month, Mathf.Clamp(_currentDay - _startDay + 1, 1, _endDay)), Day.DayState.OutMonth, weeks[i].GetChild(j).GetComponent<DayDisplay>());
+                    }
+                    else
+                    {
+                        _newDay = new Day(new DateTime(_date.Year, _date.Month, Mathf.Clamp(_currentDay - _startDay + 1, 1, _endDay)), Day.DayState.InMonth, weeks[i].GetChild(j).GetComponent<DayDisplay>());
+                    }
+                    days.Add(_newDay);
+                }
+            }
+
+            //Change the state and display of the current day if on the calendar
+            if (DateTime.Now.Year == _year && DateTime.Now.Month == _month)
+            {
+                days[(DateTime.Now.Day - 1) + _startDay].UpdateState(Day.DayState.Current);
+            }
+        }
+
+        /// <summary>
+        /// Update days, month and year of calendar based on year and month
         /// </summary>
         void UpdateCalendar(int _year, int _month)
         {
@@ -124,49 +149,21 @@ namespace MVC.App.UI.SecondaryMenu.Training
             int _startDay = GetMonthStartDay(_year, _month);
             int _endDay = GetTotalNumberOfDays(_year, _month);
 
-            //Create the days
-            //This only happens for our first Update Calendar when we have no Day objects therefore we must create them
-
-            if (days.Count == 0)
+            // Update the state and information of days in calendar
+            for (int i = 0; i < WEEK_NUM * DAY_NUM; i++)
             {
-                for (int i = 0; i < WEEK_NUM; i++)
+                if (i < _startDay || i - _startDay >= _endDay)
                 {
-                    for (int j = 0; j < DAY_NUM; j++)
-                    {
-                        Day _newDay;
-                        int _currentDay = (i * 7) + j;
-                        if (_currentDay < _startDay || _currentDay - _startDay >= _endDay)
-                        {
-                            _newDay = new Day(new DateTime(_date.Year, _date.Month, Mathf.Clamp(_currentDay - _startDay + 1, 1, _endDay)), Day.DayState.OutMonth, weeks[i].GetChild(j).GetComponent<DayDisplay>());
-                        }
-                        else
-                        {
-                            _newDay = new Day(new DateTime(_date.Year, _date.Month, Mathf.Clamp(_currentDay - _startDay + 1, 1, _endDay)), Day.DayState.InMonth, weeks[i].GetChild(j).GetComponent<DayDisplay>());
-                        }
-                        days.Add(_newDay);
-                    }
+                    days[i].UpdateState(Day.DayState.OutMonth);
                 }
-            }
-            //loop through days
-            //Since we already have the days objects, we can just update them rather than creating new ones
-            else
-            {
-                for (int i = 0; i < WEEK_NUM * DAY_NUM; i++)
+                else
                 {
-                    if (i < _startDay || i - _startDay >= _endDay)
-                    {
-                        days[i].UpdateState(Day.DayState.OutMonth);
-                    }
-                    else
-                    {
-                        days[i].UpdateState(Day.DayState.InMonth);
-                    }
-
-                    days[i].UpdateDay(new DateTime(_date.Year, _date.Month, Mathf.Clamp(i - _startDay + 1, 1, _endDay)));
+                    days[i].UpdateState(Day.DayState.InMonth);
                 }
+                days[i].UpdateDay(new DateTime(_date.Year, _date.Month, Mathf.Clamp(i - _startDay + 1, 1, _endDay)));
             }
 
-            //This just checks if today is on our calendar. If so, we highlight it in green
+            //Change the state and display of the current day if on the calendar
             if (DateTime.Now.Year == _year && DateTime.Now.Month == _month)
             {
                 days[(DateTime.Now.Day - 1) + _startDay].UpdateState(Day.DayState.Current);
@@ -175,7 +172,7 @@ namespace MVC.App.UI.SecondaryMenu.Training
         }
 
         /// <summary>
-        /// This returns which day of the week the month is starting on
+        /// Get the day of week the month is starting on
         /// </summary>
         int GetMonthStartDay(int _year, int _month)
         {
@@ -200,12 +197,12 @@ namespace MVC.App.UI.SecondaryMenu.Training
         }
 
         /// <summary>
-        /// This either adds or subtracts month from our currentDate.
-        /// The arrows will use this function to switch to past or future months
+        /// Set the calendar to previous or next month depending on direction.
+        /// Connected to calendar arrows
         /// </summary>
         public void SwitchMonth(int _direction)
         {
-            currentDate = currentDate.AddMonths(_direction);
+            currentDate = currentDate.AddMonths(MathF.Sign(_direction));
             UpdateCalendar(currentDate.Year, currentDate.Month);
             OnMonthSwitch?.Invoke();
         }

@@ -1,10 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace MVC.App.UI.SecondaryMenu.Stats
 {
@@ -27,15 +22,21 @@ namespace MVC.App.UI.SecondaryMenu.Stats
             Statistics.Instance.OnTimePeriodChanged += UpdateDisplay;
         }
 
+        /// <summary>
+        /// Set the value of the day calories display
+        /// </summary>
         private void SetDayCalories()
         {
             todayCalories.SetValue(caloriesBurntToday, 0.5f, true);
         }
 
+        /// <summary>
+        /// Set the value of the week calories display for each day
+        /// </summary>
         private void SetWeekCalories()
         {
             // Get current day of the week
-            int _currentDay = 0;
+            int _currentDay;
 
             //Correct the day offset
             if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday) _currentDay = 6;
@@ -53,9 +54,9 @@ namespace MVC.App.UI.SecondaryMenu.Stats
             CalorieStat _stat;
             float _ratio;
             bool _isCurrentDay;
-
             for (int i = 0; i < _daysNum; i++)
             {
+                // Get if index is the current day
                 if (i == _currentDay) _isCurrentDay = true;
                 else _isCurrentDay = false;
 
@@ -65,6 +66,9 @@ namespace MVC.App.UI.SecondaryMenu.Stats
             }
         }
 
+        /// <summary>
+        /// Set the value of the month calories display for each week
+        /// </summary>
         private void SetMonthCalories()
         {
             // Get current week of the month
@@ -85,9 +89,9 @@ namespace MVC.App.UI.SecondaryMenu.Stats
             CalorieStat _stat;
             float _ratio;
             bool _isCurrentWeek;
-
             for (int i = 0; i < _weeksNum; i++)
             {
+                // Get if index is the current week
                 if (i == _currentWeek) _isCurrentWeek = true;
                 else _isCurrentWeek = false;
 
@@ -97,12 +101,17 @@ namespace MVC.App.UI.SecondaryMenu.Stats
             }
         }
 
+        /// <summary>
+        /// Display the right calories display depending on current period selected
+        /// </summary>
         private void UpdateDisplay()
         {
+            // Hide all calories display
             todayCalories.gameObject.SetActive(false);
             weekCaloriesContainer.gameObject.SetActive(false);
             monthCaloriesContainer.gameObject.SetActive(false);
 
+            // Display only the ones for the selected period
             switch (Statistics.Instance.SelectedPeriod)
             {
                 case Statistics.TimePeriod.Day:

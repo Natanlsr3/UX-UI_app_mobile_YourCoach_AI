@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using MVC.App.UI.Workout;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MVC.App.UI.SecondaryMenu.Training
@@ -30,11 +27,18 @@ namespace MVC.App.UI.SecondaryMenu.Training
             base.Start();
             detailButton.onClick.AddListener(DisplayExercises);
             sessionDisplay.SetActive(false);
+
+            // Connect to button click
             DayDisplay.OnDayClick += UpdateDisplay;
         }
 
+        /// <summary>
+        /// Update the workout display based on the given date
+        /// </summary>
+        /// <param name="_day"></param>
         private void UpdateDisplay(DayDisplay _day)
         {
+            // Check if there is a workout at the given date
             if (LogSession.Instance.CheckWorkoutDate(_day.Date))
             {
                 sessionDisplay.SetActive(true);
@@ -43,6 +47,7 @@ namespace MVC.App.UI.SecondaryMenu.Training
                 nameDisplay.text = _session.WorkoutName;
                 typeDisplay.text = _session.WorkoutType;
 
+                // Update duration display
                 float _durationHours = Mathf.Floor(_session.Duration / 60f);
                 float _durationMinutes = _session.Duration % 60f;
                 if (_durationHours >= 1 && _durationMinutes > 0) durationDisplay.text = _durationHours + "h" + _durationMinutes;
@@ -56,6 +61,10 @@ namespace MVC.App.UI.SecondaryMenu.Training
             else sessionDisplay.SetActive(false);
         }
 
+        /// <summary>
+        /// Create and display the exercise list of the workout, with their information.
+        /// If there is already a pop-up active, leave the pop-up window
+        /// </summary>
         private void DisplayExercises()
         {
             if (isPreviewDisplayed)
@@ -64,6 +73,7 @@ namespace MVC.App.UI.SecondaryMenu.Training
             }
             else
             {
+                // Create and set the display of the preview with the selected date workout
                 LogSession.WorkoutSession _session = LogSession.Instance.GetSessionAtDate(Calendar.Instance.SelectedDate);
                 workoutPreview = Instantiate(workoutPreviewPrefab, transform).GetComponent<WorkoutPreview>();
                 workoutPreview.SetPreview(_session.WorkoutName, _session.WorkoutExercises);

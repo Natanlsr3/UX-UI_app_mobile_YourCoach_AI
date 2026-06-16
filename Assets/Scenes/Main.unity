@@ -520,6 +520,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3176676061322207, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1168709443079038654, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -604,12 +608,102 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3627963093479217799, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627963093479217799, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627963093479217799, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627963093479217799, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3947660833907072015, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_Name
       value: ConversationMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5097606292764658111, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097606292764658111, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097606292764658111, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097606292764658111, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104693859709627836, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104693859709627836, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104693859709627836, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104693859709627836, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7509606364839720190, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529832079176840139, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529832079176840139, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529832079176840139, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529832079176840139, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601069637199109221, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: coachAnswersProfile.Array.data[0].Answer
+      value: Hello ! How are you today ?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601069637199109221, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: coachAnswersProfile.Array.data[1].Answer
+      value: No problem, I suggest a short session to gently stretch your legs, and
+        we'll adapt the exercises. If the pain is too intense or persistent, let
+        me know and we'll stop the session so you can rest and pick it up later.
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090727072208595036, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090727072208595036, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090727072208595036, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090727072208595036, guid: cb25622d16cd07c4cabfa00b1e312bc7, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

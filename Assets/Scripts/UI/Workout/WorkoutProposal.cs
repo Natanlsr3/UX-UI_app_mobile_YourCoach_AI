@@ -1,12 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using MVC.App.UI.MainMenu;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MVC.App.UI.Workout
@@ -17,6 +12,7 @@ namespace MVC.App.UI.Workout
         [SerializeField] private Button noButton;
         [SerializeField] private GameObject startButtonPrefab;
 
+        // The conversation instance that created this object. It is set by the conversation instance when created
         [HideInInspector] public Conversation Conversation;
 
         [Header("Additional Infos")]
@@ -41,8 +37,12 @@ namespace MVC.App.UI.Workout
             LogSession.Instance.WorkoutName = m_WorkoutName;
         }
 
+        /// <summary>
+        /// Add the workout to the session list and go to the workout menu
+        /// </summary>
         private void StartWorkout()
         {
+            // Create a new session with the registered information and add it to the list of sessions
             LogSession.WorkoutSession _session = new LogSession.WorkoutSession()
             {
                 WorkoutExercises = m_Exercises,
@@ -55,16 +55,19 @@ namespace MVC.App.UI.Workout
                 MusclesWorked = muscles
             };
             LogSession.Instance.WorkoutSessions.Add(_session);
+
+            // Go to workout menu
             SceneManager.LoadScene("Workout");
         }
 
+        /// <summary>
+        /// Refuse the proposal and leave the pop-up
+        /// </summary>
         private void RefuseProposal()
         {
             Conversation.SetConversationDisplay(true);
             Leave();
         }
-
-
     }
 }
 

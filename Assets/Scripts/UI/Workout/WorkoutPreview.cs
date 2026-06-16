@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace MVC.App.UI.Workout
 {
@@ -14,13 +12,21 @@ namespace MVC.App.UI.Workout
         [SerializeField] protected Transform m_ExerciseContainer;
         [SerializeField] protected GameObject m_ExerciseDisplayPrefab;
 
+        // List of workout exercises
         [SerializeField] protected List<Exercise> m_Exercises;
+
+        // List of optional workout exercises (= replacement exercises)
         [SerializeField] protected List<Exercise> m_OptExercises;
 
         protected virtual void Start()
         {
         }
 
+        /// <summary>
+        /// Create and display the list of exercises in the workout and their information
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <param name="_exercises"></param>
         public void SetPreview(string _name, List<Exercise> _exercises)
         {
             m_WorkoutName = _name;
@@ -39,11 +45,13 @@ namespace MVC.App.UI.Workout
             }
         }
 
+        /// <summary>
+        /// Exit and destroy the preview
+        /// </summary>
         public void Leave()
         {
             Destroy(gameObject);
         }
-
     }
 }
 

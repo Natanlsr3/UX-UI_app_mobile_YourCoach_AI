@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using MVC.App.UI.RegisterMenu.RegisterPopUp;
 using TMPro;
@@ -36,9 +35,12 @@ namespace MVC.App.UI.SecondaryMenu.Profile
             base.Start();
 
             anim = GetComponent<Animator>();
+
+            // Connect the buttons
             settingsButton.onClick.AddListener(GoToSettings);
             forgetPasswordButton.onClick.AddListener(SetForgetPasswordWindow);
 
+            // Set the user information texts based on log session current user
             firstNameDisplay.text = LogSession.Instance.CurrentUser.FirstName;
             lastNameDisplay.text = LogSession.Instance.CurrentUser.LastName;
             passwordDisplay.text = LogSession.Instance.CurrentUser.Password;
@@ -60,11 +62,17 @@ namespace MVC.App.UI.SecondaryMenu.Profile
             goal.value = (int)LogSession.Instance.CurrentUser.Goal;
         }
 
+        /// <summary>
+        /// Go to the settings menu
+        /// </summary>
         private void GoToSettings()
         {
             SceneManager.LoadScene("Settings");
         }
 
+        /// <summary>
+        /// Create, display and initialize the forget password pop-up window
+        /// </summary>
         private void SetForgetPasswordWindow()
         {
             anim.SetBool(IS_ACTIVE, false);
@@ -74,6 +82,9 @@ namespace MVC.App.UI.SecondaryMenu.Profile
             window.OnLeftPopUp += DisplayProfile;
         }
 
+        /// <summary>
+        /// Animate the display of the profile menu and update the password display
+        /// </summary>
         private void DisplayProfile()
         {
             passwordDisplay.text = LogSession.Instance.CurrentUser.Password;

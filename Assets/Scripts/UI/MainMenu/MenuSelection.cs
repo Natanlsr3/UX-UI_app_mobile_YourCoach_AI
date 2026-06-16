@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +10,7 @@ namespace MVC.App.UI.MainMenu
         [SerializeField] private Button moreButton;
         [SerializeField] private Transform buttonContainer;
 
+        // List of the different scenes for secondary menus
         private List<string> secondaryMenus = new List<string>() { "Profile", "Statistics", "Challenges", "Training", "Settings" };
 
         private Animator anim;
@@ -24,6 +24,7 @@ namespace MVC.App.UI.MainMenu
 
             moreButton.onClick.AddListener(DisplayButtons);
 
+            // Connect each menu button to send to their respective scene
             int _buttonNum = buttonContainer.childCount;
             for (int i = 0; i < _buttonNum; i++)
             {
@@ -33,12 +34,21 @@ namespace MVC.App.UI.MainMenu
             }
         }
 
+        /// <summary>
+        /// Switch display for menu buttons
+        /// </summary>
         private void DisplayButtons()
         {
             buttonDisplayed = !buttonDisplayed;
+
+            // Animate the display switch
             anim.SetBool(IS_DISPLAYED, buttonDisplayed);
         }
 
+        /// <summary>
+        /// Go to the given menu
+        /// </summary>
+        /// <param name="_menu"></param>
         private void GoToMenu(string _menu)
         {
             SceneManager.LoadScene(_menu);

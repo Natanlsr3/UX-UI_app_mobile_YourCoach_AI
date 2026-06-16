@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using MVC.App;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MVC.App.UI.SecondaryMenu.Challenge
@@ -24,24 +20,26 @@ namespace MVC.App.UI.SecondaryMenu.Challenge
         [SerializeField] private Sprite inProgressDisplay;
         [SerializeField] private Sprite completedDisplay;
 
+        // State texts
         private const string IN_PROGRESS_TEXT = "In Progress";
         private const string COMPLETED_TEXT = "Completed";
-        void Start()
-        {
 
-        }
-
+        /// <summary>
+        /// Set the display based on the challenge information and state
+        /// </summary>
+        /// <param name="_challenge"></param>
         public void SetDisplay(ChallengeTracker.Challenge _challenge)
         {
             title.text = _challenge.Title;
             info.text = _challenge.Info;
 
+            // Display the challenge progress
             float _currentProgress = _challenge.Progress;
             float _maxProgress = _challenge.MaxProgress;
             progressDisplay.text = _currentProgress + "/" + _maxProgress;
-
             progressBar.fillAmount = _currentProgress / _maxProgress;
 
+            // Set the display depending on current challenge state
             switch (_challenge.State)
             {
                 case ChallengeTracker.ChallengeState.InProgress :

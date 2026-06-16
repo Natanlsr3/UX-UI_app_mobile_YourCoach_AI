@@ -1,25 +1,18 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 namespace MVC.App.UI.RegisterMenu.RegisterPopUp
 {
     public class CreateAccount : RegisterPopUp
     {
-        // New account username and password
-
+        // Send new account username and password
         public event Action<string, string> OnAccountCreated;
 
-        protected override void Start()
-        {
-            base.Start();
-        }
-
+        /// <summary>
+        /// Create a new account with registered username and password
+        /// </summary>
         private void CreateNewAccount()
         {
+            // Check if the fields are filled and if there is not already a user with this username
             if (!LogSession.Instance.ExistingUser(m_TypedUsername) && m_TypedUsername != "" && m_TypedPassword != "")
             {
                 OnAccountCreated?.Invoke(m_TypedUsername, m_TypedPassword);
