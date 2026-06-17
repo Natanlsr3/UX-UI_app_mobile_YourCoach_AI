@@ -388,6 +388,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5797330247899931269, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: m_Name
+      value: Exercises
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797330247899931269, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611794356563925622, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: m_Name
+      value: WorkoutStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611794356563925622, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7415278474695757046, guid: 1a5eafaa7b59dd84ab752f298f28f97b, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -370,6 +370,7 @@ namespace MVC.App.UI.Workout
             // If skipped after final exercise, end the workout session
             if (exerciseProgressNumber >= exerciseTotalNumber) SetEndSession();
         }
+
         /// <summary>
         /// Prepare to skip to the "alternate" exercise 
         /// </summary>

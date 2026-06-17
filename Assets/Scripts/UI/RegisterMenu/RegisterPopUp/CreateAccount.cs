@@ -12,7 +12,7 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
         /// </summary>
         private void CreateNewAccount()
         {
-            // Check if the fields are filled and if there is not already a user with this username
+            // Check if the fields are filled and if there is a user with this username
             if (!LogSession.Instance.ExistingUser(m_TypedUsername) && m_TypedUsername != "" && m_TypedPassword != "")
             {
                 OnAccountCreated?.Invoke(m_TypedUsername, m_TypedPassword);

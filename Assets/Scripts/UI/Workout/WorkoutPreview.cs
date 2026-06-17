@@ -41,7 +41,8 @@ namespace MVC.App.UI.Workout
             {
                 Exercise _exercise = m_Exercises[i];
                 ExerciseDisplay _exerciseDisplay = Instantiate(m_ExerciseDisplayPrefab, m_ExerciseContainer).GetComponent<ExerciseDisplay>();
-                _exerciseDisplay.SetExercise(_exercise.Name, _exercise.ExercisePreview, _exercise.Duration, _exercise.Level, _exercise.SetNumber, _exercise.RepNumber, _exercise.Muscle, _exercise.RecoveryTime);
+                _exerciseDisplay.SetExercise(_exercise.Name, _exercise.ExercisePreview, _exercise.Duration, _exercise.Level,
+                    _exercise.SetNumber, _exercise.RepNumber, _exercise.Muscle, _exercise.RecoveryTime);
             }
         }
 

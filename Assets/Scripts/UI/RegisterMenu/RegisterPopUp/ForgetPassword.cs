@@ -16,7 +16,7 @@ namespace MVC.App.UI.RegisterMenu.RegisterPopUp
         /// </summary>
         private void ResetPassword()
         {
-            // Check if the field is filled and if there is not already a user with this username
+            // Check if the field is filled and if there is a user with this username
             if (LogSession.Instance.ExistingUser(m_TypedUsername) && m_TypedPassword != "")
             {
                 OnPasswordReset?.Invoke(m_TypedPassword);

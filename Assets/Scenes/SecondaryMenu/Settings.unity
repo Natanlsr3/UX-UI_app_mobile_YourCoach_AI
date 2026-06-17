@@ -532,11 +532,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7305534933089526670, guid: 04557a7ade8e48c41b0fe29db8b1407d, type: 3}
+      propertyPath: m_Name
+      value: TimeZoneMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 7547797489376143618, guid: 04557a7ade8e48c41b0fe29db8b1407d, type: 3}
       propertyPath: m_Name
       value: SettingsMenu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2486346822713779825, guid: 04557a7ade8e48c41b0fe29db8b1407d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

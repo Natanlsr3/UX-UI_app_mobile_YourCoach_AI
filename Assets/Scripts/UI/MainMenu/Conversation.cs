@@ -53,6 +53,7 @@ namespace MVC.App.UI.MainMenu
 
         private CoachState currentCoachState = CoachState.Void;
 
+        // Post process for screen blur
         private PostProcessVolume ppVolume;
 
         private Image sendDisplay;
